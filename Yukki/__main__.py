@@ -34,7 +34,7 @@ HELPABLE = {}
 
 async def initiate_bot():
     with console.status(
-        "[magenta] Finalizing Booting...",
+        "[magenta] Önyükleme Sonlandırılıyor...",
     ) as status:
         try:
             chats = await get_active_video_chats()
@@ -51,11 +51,11 @@ async def initiate_bot():
         except Exception as e:
             pass
         status.update(
-            status="[bold blue]Scanning for Plugins", spinner="earth"
+            status="[bold blue]Eklentileri Tarama", spinner="earth"
         )
         console.print("Found {} Plugins".format(len(ALL_MODULES)) + "\n")
         status.update(
-            status="[bold red]Importing Plugins...",
+            status="[bold red]Eklentileri Alma...",
             spinner="bouncingBall",
             spinner_style="yellow",
         )
@@ -76,144 +76,144 @@ async def initiate_bot():
                         imported_module.__MODULE__.lower()
                     ] = imported_module
             console.print(
-                f">> [bold cyan]Successfully imported: [green]{all_module}.py"
+                f">> [bold cyan]Başarıyla alındı: [green]{all_module}.py"
             )
         console.print("")
         status.update(
-            status="[bold blue]Importation Completed!",
+            status="[bold blue]Alma Tamamlandı!",
         )
     console.print(
-        "[bold green]Congrats!! SiestaXMusic Bot has started successfully!\n"
+        "[bold green]Tebrikler!! Talia winamp müzik Bot başarıyla başladı!\n"
     )
     try:
         await app.send_message(
             LOG_GROUP_ID,
-            "<b>Congrats!! Music Bot has started successfully!</b>",
+            "<b>Tebrikler!! Müzik Botu başarıyla başladı!</b>",
         )
     except Exception as e:
         print(str(e))
-        console.print(f"\n[red]Stopping Bot")
+        console.print(f"\n[red]Bot Durduruluyor")
         return
     a = await app.get_chat_member(LOG_GROUP_ID, BOT_ID)
     if a.status != "administrator":
-        print("Promote Bot as Admin in Logger Channel")
-        console.print(f"\n[red]Stopping Bot")
+        print("Logger Kanalında Bot'u Yönetici Olarak Yükselt")
+        console.print(f"\n[red]Bot Durduruluyor")
         return
-    console.print(f"\n┌[red] Bot Started as {BOT_NAME}!")
+    console.print(f"\n┌[red] Bot Olarak Başlatıldı {BOT_NAME}!")
     console.print(f"├[green] ID :- {BOT_ID}!")
     if STRING1 != "None":
         try:
             await ASS_CLI_1.send_message(
                 LOG_GROUP_ID,
-                "<b>Congrats!! Assistant Client 1  has started successfully!</b>",
+                "<b>Tebrikler!! Yardımcı 1 başarıyla başladı!</b>",
             )
         except Exception as e:
             print(
-                "\nAssistant Account 1 has failed to access the log Channel. Make sure that you have added your Assistant to your log channel and promoted as admin!"
+                "\nHesap 1 günlük Kanal'a erişemedi. Asistanınızı günlük kanalınıza eklediğinizden ve yönetici olarak terfi ettirdiğinizden emin olun!"
             )
-            console.print(f"\n[red]Stopping Bot")
+            console.print(f"\n[red]Bot Durduruluyor")
             return
         try:
-            await ASS_CLI_1.join_chat("TechZBots")
-            await ASS_CLI_1.join_chat("TechZBots_Support")
+            await ASS_CLI_1.join_chat("Sohbetdestek")
+            await ASS_CLI_1.join_chat("BotDestekGrubu")
         except:
             pass
-        console.print(f"├[red] Assistant 1 Started as {ASSNAME1}!")
+        console.print(f"├[red] Asistan 1 Olarak Başladı {ASSNAME1}!")
         console.print(f"├[green] ID :- {ASSID1}!")
     if STRING2 != "None":
         try:
             await ASS_CLI_2.send_message(
                 LOG_GROUP_ID,
-                "<b>Congrats!! Assistant Client 2 has started successfully!</b>",
+                "<b>Tebrikler!! Yardımcı İstemci 2 başarıyla başlatıldı!</b>",
             )
         except Exception as e:
             print(
-                "\nAssistant Account 2 has failed to access the log Channel. Make sure that you have added your Assistant to your log channel and promoted as admin!"
+                "\nHesap 2 günlük Kanalı'na erişemedi. Asistanınızı günlük kanalınıza eklediğinizden ve yönetici olarak terfi ettirdiğinizden emin olun!"
             )
-            console.print(f"\n[red]Stopping Bot")
+            console.print(f"\n[red]Bot Durduruluyor")
             return
         try:
-            await ASS_CLI_2.join_chat("TechZBots")
-            await ASS_CLI_2.join_chat("TechZBots_Support")
+            await ASS_CLI_2.join_chat("Sohbetdestek")
+            await ASS_CLI_2.join_chat("BotDestekGrubu")
         except:
             pass
-        console.print(f"├[red] Assistant 2 Started as {ASSNAME2}!")
+        console.print(f"├[red] Asistan 2 Olarak Başladı {ASSNAME2}!")
         console.print(f"├[green] ID :- {ASSID2}!")
     if STRING3 != "None":
         try:
             await ASS_CLI_3.send_message(
                 LOG_GROUP_ID,
-                "<b>Congrats!! Assistant Client 3 has started successfully!</b>",
+                "<b>Tebrikler!! Yardımcı İstemci 3 başarıyla başlatıldı!</b>",
             )
         except Exception as e:
             print(
-                "\nAssistant Account 3 has failed to access the log Channel. Make sure that you have added your Assistant to your log channel and promoted as admin!"
+                "\nHesap 3, Kanal günlüğüne erişemedi. Asistanınızı günlük kanalınıza eklediğinizden ve yönetici olarak terfi ettirdiğinizden emin olun!"
             )
-            console.print(f"\n[red]Stopping Bot")
+            console.print(f"\n[red]Bot Durduruluyor")
             return
         try:
-            await ASS_CLI_3.join_chat("TechZBots")
-            await ASS_CLI_3.join_chat("TechZBots_Support")
+            await ASS_CLI_3.join_chat("Sohbetdestek")
+            await ASS_CLI_3.join_chat("BotDestekGrubu")
         except:
             pass
-        console.print(f"├[red] Assistant 3 Started as {ASSNAME3}!")
+        console.print(f"├[red] Asistan 3 Olarak Başladı {ASSNAME3}!")
         console.print(f"├[green] ID :- {ASSID3}!")
     if STRING4 != "None":
         try:
             await ASS_CLI_4.send_message(
                 LOG_GROUP_ID,
-                "<b>Congrats!! Assistant Client 4 has started successfully!</b>",
+                "<b>Tebrikler!! Yardımcı İstemci 4 başarıyla başladı!</b>",
             )
         except Exception as e:
             print(
-                "\nAssistant Account 4 has failed to access the log Channel. Make sure that you have added your Assistant to your log channel and promoted as admin!"
+                "\nHesap 4 günlük Kanalı'na erişemedi. Asistanınızı günlük kanalınıza eklediğinizden ve yönetici olarak terfi ettirdiğinizden emin olun!"
             )
-            console.print(f"\n[red]Stopping Bot")
+            console.print(f"\n[red]Bot Durduruluyor")
             return
         try:
-            await ASS_CLI_4.join_chat("TechZBots")
-            await ASS_CLI_4.join_chat("TechZBots_Support")
+            await ASS_CLI_4.join_chat("Sohbetdestek")
+            await ASS_CLI_4.join_chat("BotDestekGrubu")
         except:
             pass
-        console.print(f"├[red] Assistant 4 Started as {ASSNAME4}!")
+        console.print(f"├[red] Asistan 4 Olarak Başladı {ASSNAME4}!")
         console.print(f"├[green] ID :- {ASSID4}!")
     if STRING5 != "None":
         try:
             await ASS_CLI_5.send_message(
                 LOG_GROUP_ID,
-                "<b>Congrats!! Assistant Client 5 has started successfully!</b>",
+                "<b>Tebrikler!! Yardımcı İstemci 5 başarıyla başlatıldı!</b>",
             )
         except Exception as e:
             print(
-                "\nAssistant Account 5 has failed to access the log Channel. Make sure that you have added your Assistant to your log channel and promoted as admin!"
+                "\nHesap 5 günlük Kanalı'na erişemedi. Asistanınızı günlük kanalınıza eklediğinizden ve yönetici olarak terfi ettirdiğinizden emin olun!"
             )
-            console.print(f"\n[red]Stopping Bot")
+            console.print(f"\n[red]Bot Durduruluyor")
             return
         try:
-            await ASS_CLI_5.join_chat("TechZBots")
-            await ASS_CLI_5.join_chat("TechZBots_Support")
+            await ASS_CLI_5.join_chat("Sohbetdestek")
+            await ASS_CLI_5.join_chat("BotDestekGrubu")
         except:
             pass
-        console.print(f"├[red] Assistant 5 Started as {ASSNAME5}!")
+        console.print(f"├[red] Asistan 5 Olarak Başladı {ASSNAME5}!")
         console.print(f"├[green] ID :- {ASSID5}!")
     if LOG_SESSION != "None":
         try:
             await LOG_CLIENT.send_message(
                 LOG_GROUP_ID,
-                "<b>Congrats!! Logger Client has started successfully!</b>",
+                "<b>Tebrikler!! Günlükçü İstemcisi başarıyla başlatıldı!</b>",
             )
         except Exception as e:
             print(
-                "\nLogger Client has failed to access the log Channel. Make sure that you have added your Logger Account to your log channel and promoted as admin!"
+                "\nGünlükçü İstemcisi günlük kanalına erişemedi. Logger Hesabınızı günlük kanalınıza eklediğinizden ve yönetici olarak yükseltdiğinizden emin olun!"
             )
-            console.print(f"\n[red]Stopping Bot")
+            console.print(f"\n[red]Bot Durduruluyor")
             return
         try:
-            await LOG_CLIENT.join_chat("TechZBots")
-            await LOG_CLIENT.join_chat("TechZBots_Support")
+            await LOG_CLIENT.join_chat("Sohbetdestek")
+            await LOG_CLIENT.join_chat("BotDestekGrubu")
         except:
             pass
-    console.print(f"└[red] Yukki Music Bot Boot Completed.")
+    console.print(f"└[red] Talia Winamp Müzik Botu Önyüklemesi Tamamlandı.")
     if STRING1 != "None":
         await pytgcalls1.start()
     if STRING2 != "None":
@@ -225,14 +225,14 @@ async def initiate_bot():
     if STRING5 != "None":
         await pytgcalls5.start()
     await idle()
-    console.print(f"\n[red]Stopping Bot")
+    console.print(f"\n[red]Bot Durduruluyor")
 
 
-home_text_pm = f"""Hello firstname,
-My name is {BOT_NAME}.
-A Telegram Music+Video Streaming bot with some useful features.
+home_text_pm = f"""Merhaba firstname ,
+Benim adım. {BOT_NAME}.
+Bazı kullanışlı özelliklere sahip bir Telegram Müzik + Video Akış botuyum.
 
-All commands can be used with: / """
+Tüm komutlar: / """
 
 
 @app.on_message(filters.command(["help", f"help@{BOT_USERNAME}"]) & filters.private)
@@ -285,12 +285,12 @@ async def start_command(_, message):
                 umention = f"[{sender_name}](tg://user?id={int(sender_id)})"
                 return await LOG_CLIENT.send_message(
                     LOG_GROUP_ID,
-                    f"{message.from_user.mention} has just started bot to check <code>SUDOLIST</code>\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
+                    f"{message.from_user.mention} bot'ı kontrol etmek için yeni başlattı <code>SUDOLIST</code>\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
                 )
         if name == "help":
             return await start_menu_private(message)
         if name[0] == "i":
-            m = await message.reply_text("🔎 Fetching Info!")
+            m = await message.reply_text("🔎 Bilgi Getir!")
             query = (str(name)).replace("info_", "", 1)
             query = f"https://www.youtube.com/watch?v={query}"
             results = VideosSearch(query, limit=1)
@@ -304,26 +304,26 @@ async def start_command(_, message):
                 link = result["link"]
                 published = result["publishedTime"]
             searched_text = f"""
-🔍__**Video Track Information**__
+🔍__**Video İzleme Bilgileri**__
 
-❇️**Title:** {title}
+❇️**Başlık:** {title}
 
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-⏰**Published Time:** {published}
-🎥**Channel Name:** {channel}
-📎**Channel Link:** [Visit From Here]({channellink})
-🔗**Video Link:** [Link]({link})
+⏳**Süre:** {duration} Mins
+👀**Görünümler:** `{views}`
+⏰**Yayınlanma Zamanı:** {published}
+🎥**Kanal Adı:** {channel}
+📎**Kanal Bağlantısı:** [Visit From Here]({channellink})
+🔗**Video Bağlantısı:** [Link]({link})
 
-⚡️ __Searched Powered By {BOT_NAME}__"""
+⚡️ __Arama youtube tarafından {BOT_NAME}__"""
             key = InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="🎥 Watch Youtube Video", url=f"{link}"
+                            text="🎥 Youtube Videosunu İzleyin", url=f"{link}"
                         ),
                         InlineKeyboardButton(
-                            text="🔄 Close", callback_data="close"
+                            text="🔄 Kapat", callback_data="close"
                         ),
                     ],
                 ]
@@ -342,7 +342,7 @@ async def start_command(_, message):
                 umention = f"[{sender_name}](tg://user?id={int(sender_id)})"
                 return await LOG_CLIENT.send_message(
                     LOG_GROUP_ID,
-                    f"{message.from_user.mention} has just started bot to check <code>VIDEO INFORMATION</code>\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
+                    f"{message.from_user.mention} bot'u kontrol etmek için yeni başlattı <code>VIDEO INFORMATION</code>\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
                 )
             return
     else:
@@ -353,11 +353,11 @@ async def help_parser(name, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     return (
-        """Hello {first_name},
+        """Merhaba {first_name},
 
-Click on the buttons for more information.
+Daha fazla bilgi için düğmelere tıklayın.
 
-All commands can be used with: /
+Tüm komutlar: /
 """.format(
             first_name=name
         ),
@@ -389,7 +389,7 @@ All commands can be used with: /
         module = mod_match.group(1)
         text = (
             "{} **{}**:\n".format(
-                "Here is the help for", HELPABLE[module].__MODULE__
+                "İşte yardım menüsü", HELPABLE[module].__MODULE__
             )
             + HELPABLE[module].__HELP__
         )
@@ -397,10 +397,10 @@ All commands can be used with: /
             [
                 [
                     InlineKeyboardButton(
-                        text="↪️ Back", callback_data="help_back"
+                        text="↪️ Geri", callback_data="help_back"
                     ),
                     InlineKeyboardButton(
-                        text="🔄 Close", callback_data="close"
+                        text="🔄 Kapat", callback_data="close"
                     ),
                 ],
             ]
