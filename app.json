@@ -1,6 +1,6 @@
 {
-  "name": "SiestaXMusic",
-  "description": "A Telegram Music Bot with proper functions written in Python with Pyrogram and Py-Tgcalls.",
+  "name": "PulsarXMusic",
+  "description": "Pytrogram ve Py-Tgcalls ile Python'da yazılmış doğru işlevlere sahip Telegram Müzik Botu.",
   "logo": "https://telegra.ph/file/70eacddcef7a56310cf70.jpg",
   "keywords": [
   "python3",
@@ -13,27 +13,27 @@
   "stack": "container",
   "env": {
     "API_ID": {
-      "description": "Get this value from https://my.telegram.org",
+      "description": "Bu değeri https://my.telegram.org",
       "value": "",
       "required": true
     },
     "API_HASH": {
-      "description": "Get this value from https://my.telegram.org",
+      "description": "Bu değeri https://my.telegram.org",
       "value": "",
       "required": true
     },
     "BOT_TOKEN": {
-      "description": "A Bot's token from Botfather",
+      "description": "Botfather'dan Bot jetonu alınız",
       "value": "",
       "required": true
     },
     "DURATION_LIMIT": {
-      "description": "Duration Limit for Playout (In Mins).. Example: 60",
+      "description": "Playout için Süre Sınırı .. Example: 60",
       "value": "60",
       "required": true
     },
     "ASSISTANT_PREFIX": {
-      "description": "Prefix for Assistant Commands.",
+      "description": "Yardımcı Komutlar.",
       "value": ".",
       "required": true
     },
@@ -43,12 +43,12 @@
       "required": true
     },
     "MUSIC_BOT_NAME": {
-      "description": "A name for your Music Bot.",
+      "description": "Music Bot'unuz için bir ad.",
       "value": "",
       "required": true
     },    
     "OWNER_ID": {
-      "description": "The user id(s) of user(s) whom you would like to add as a OWNER. Multiple values shall be seperated with a space.",
+      "description": "Sahibi olarak eklemek istediğiniz kullanıcı(lar)ın kullanıcı kimlikleri. Birden çok değer bir boşlukla ayrıştırılacaktır.",
       "value": "",
       "required": true
     },
@@ -98,7 +98,7 @@
       "required": true
     },
     "THUMB_LINK": {
-      "description": "Telegraph image link of a image which you want to set as thumbnail.",
+      "description": "Küçük resim olarak ayarlamak istediğiniz görüntünün telgraf resim bağlantısı.",
       "value": "https://telegra.ph/file/e17f42bc195635b668d6d.jpg",
       "required": true
     },
@@ -108,7 +108,7 @@
       "required": true
     },
     "LIMIT": {
-      "description": "Use True to enable 20 songs limit for playlist songs from spotify. FALSE to disable.",
+      "description": "Spotify'dan çalma listesi şarkıları için 20 şarkı sınırını etkinleştirmek için True'yi kullanın.",
       "value": "TRUE",
       "required": false
     },
