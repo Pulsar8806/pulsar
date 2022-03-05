@@ -80,7 +80,7 @@ async def gen_thumb(thumbnail, title, userid, status, views, duration, channel):
 
     # tarif
     views = f"Görünümler : {views}"
-    duration = f"Süre : {duration} Dakika"
+    duration = f"Süre : {duration} dakika"
     channel = f"Kanal : {channel}"
 
     image4.text((670, 450), text=views, fill="white", font = font4, align ="left") 
