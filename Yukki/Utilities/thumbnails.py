@@ -49,7 +49,7 @@ async def gen_thumb(thumbnail, title, userid, status, views, duration, channel):
     image1 = image11.filter(ImageFilter.BoxBlur(10))
     image2 = Image.blend(image1,black,0.6)
 
-    # Cropping circle from thubnail
+    # Thubnail'den kırpma çemberi
     image3 = image11.crop((280,0,1000,720))
     lum_img = Image.new('L', [720,720] , 0)
     draw = ImageDraw.Draw(lum_img)
@@ -73,7 +73,7 @@ async def gen_thumb(thumbnail, title, userid, status, views, duration, channel):
     image4.text((10, 10), BOT_NAME, fill="white", font = font1, align ="left") 
     image4.text((670, 150), status, fill="white", font = font2, align ="left") 
 
-    # title
+    # başlık
     title1 = truncate(title)
     image4.text((670, 300), text=title1[0], fill="white", font = font3, align ="left") 
     image4.text((670, 350), text=title1[1], fill="white", font = font3, align ="left") 
