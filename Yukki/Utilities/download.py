@@ -43,7 +43,7 @@ async def get_formats(CallbackQuery, videoid, user_id, type):
         formats = YT_info(url)
     except Exception:
         return await CallbackQuery.message.reply_text(
-            "Failed To Fetch Data from YT...Could be YTDL issue."
+            "YT'den Veri Alınamadı... YTDL sorunu olabilir."
         )
     j = 0
     for x in formats:
