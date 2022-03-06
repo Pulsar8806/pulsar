@@ -107,7 +107,7 @@ async def mplayaa(_, message: Message):
             mystic,
         )
     elif video:
-        return await message.reply_text("Kullanmak /dinle yürütecek komutlar.")
+        return await message.reply_text("Kullanmak /oynat veya /mplay başlatma komutları.")
     elif url:
         mystic = await message.reply_text("🔄 URL işleniyor... Lütfen bekleyin!")
         if not message.reply_to_message:
@@ -134,7 +134,7 @@ async def mplayaa(_, message: Message):
             await message.reply_photo(
                 photo="Utils/Playlist.jpg",
                 caption=(
-                    "**Kullanım:** /dinle [Müzik Adı veya Youtube Bağlantısı veya Sese Yanıt]\n\nÇalma Listelerini çalmak istiyorsanız! Aşağıdakilerden birini seçin."
+                    "**Kullanım:** /mplay [Müzik Adı veya Youtube Bağlantısı veya Sese Yanıt]\n\nÇalma Listelerini çalmak istiyorsanız! Aşağıdakilerden birini seçin."
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
