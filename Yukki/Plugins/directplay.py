@@ -156,7 +156,7 @@ async def mplayaa(_, message: Message):
 
 
 @app.on_message(
-    filters.command(["vplay", f"vplay@{BOT_USERNAME}"]) & filters.group
+    filters.command(["izle", f"izle@{BOT_USERNAME}"]) & filters.group
 )
 @checker
 @logging
@@ -182,7 +182,7 @@ async def vplayaaa(_, message: Message):
     )
     url = get_url(message)
     if audio:
-        return await message.reply_text("Use /play or /mplay commands to play audio files in voice chat.")
+        return await message.reply_text("Kullanım /izle  sesli sohbette ses dosyalarını çalma komutları.")
     elif video:
         limit = await get_video_limit(141414)
         if not limit:
@@ -195,7 +195,7 @@ async def vplayaaa(_, message: Message):
                 pass
             else:
                 return await message.reply_text(
-                    "Sorry! Bot only allows limited number of video calls due to CPU overload issues. Many other chats are using video call right now. Try switching to audio or try again later"
+                    "Pardon! Bot, CPU aşırı yükleme sorunları nedeniyle yalnızca sınırlı sayıda görüntülü aramaya izin verir. Diğer birçok sohbet şu anda görüntülü arama kullanıyor. Sese geçmeyi deneyin veya daha sonra yeniden deneyin"
                 )
         mystic = await message.reply_text(
             "🔄 **Video İşleniyor... Lütfen bekleyin!**"
@@ -261,3 +261,4 @@ async def vplayaaa(_, message: Message):
         ) = get_yt_info_query(query)      
         VideoData = f"Choose {videoid}|{duration_min}|{message.from_user.id}"
         return await vplay_stream(message,VideoData,mystic)
+
