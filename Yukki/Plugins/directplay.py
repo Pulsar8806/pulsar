@@ -30,7 +30,7 @@ from Yukki.Utilities.videostream import start_stream_video
 from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
                                      get_yt_info_query_slider)
 
-from Yukki.Plugins.custom.func import mplay_stream, vplay_stream
+from Yukki.Plugins.custom.func import dinle_stream, vplay_stream
 
 @app.on_message(
     filters.command(["dinle", f"dinle@{BOT_USERNAME}"]) & filters.group
@@ -39,7 +39,7 @@ from Yukki.Plugins.custom.func import mplay_stream, vplay_stream
 @logging
 @PermissionCheck
 @AssistantAdd
-async def mplayaa(_, message: Message):    
+async def dinle(_, message: Message):    
     await message.delete()
     if message.chat.id not in db_mem:
         db_mem[message.chat.id] = {}
@@ -125,7 +125,7 @@ async def mplayaa(_, message: Message):
         ) = get_yt_info_query(query)
         await mystic.delete()        
         MusicData = f"Müzik Akışı {videoid}|{duration_min}|{message.from_user.id}"
-        return await mplay_stream(message,MusicData)
+        return await dinle_stream(message,MusicData)
     else:
         if len(message.command) < 2:
             buttons = playlist_markup(
@@ -152,7 +152,7 @@ async def mplayaa(_, message: Message):
         ) = get_yt_info_query(query)
         await mystic.delete()
         MusicData = f"Müzik Akışı {videoid}|{duration_min}|{message.from_user.id}"
-        return await mplay_stream(message,MusicData)
+        return await dinle_stream(message,MusicData)
 
 
 @app.on_message(
