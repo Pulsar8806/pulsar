@@ -74,10 +74,10 @@ def inl_mark(videoid, user_id):
         ],
         [
             InlineKeyboardButton(
-                text="⬅️  Geri Git", callback_data=f"good {videoid}|{user_id}"
+                text="🔙 Geri Git", callback_data=f"good {videoid}|{user_id}"
             ),
             InlineKeyboardButton(
-                text="👉 Menüyü Kapat", callback_data=f"close2"
+                text="👉 Kapat", callback_data=f"close2"
             ),
         ],
     ]
