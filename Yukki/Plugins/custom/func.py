@@ -56,7 +56,7 @@ from Yukki.Utilities.timer import start_timer
 
 loop = asyncio.get_event_loop()
 
-async def mplay_stream(message,MusicData):
+async def dinle_stream(message,MusicData):
     if message.chat.id not in db_mem:
         db_mem[message.chat.id] = {}
     try:
@@ -91,7 +91,7 @@ async def mplay_stream(message,MusicData):
         return await message.reply_text(
             f"**Duration Limit Exceeded**\n\n**Allowed Duration: **{DURATION_LIMIT_MIN} minute(s)\n**Received Duration:** {duration_min} minute(s)"
         )
-    mystic = await message.reply_text(f"Processing:- {title[:20]}")
+    mystic = await message.reply_text(f"İşleniyor:- {title[:20]}")
     await mystic.edit(
         f"**{MUSIC_BOT_NAME} Downloader**\n\n**Title:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
     )
@@ -102,7 +102,7 @@ async def mplay_stream(message,MusicData):
     theme = await check_theme(chat_id)
     chat_title = await specialfont_to_normal(chat_title)
     thumb = await gen_thumb(
-                        thumbnail, title, message.from_user.id, "NOW PLAYING", views, duration_min, channel
+                        thumbnail, title, message.from_user.id, "Talia Winamp", views, duration_min, channel
                     )
     if chat_id not in db_mem:
         db_mem[chat_id] = {}
