@@ -9,15 +9,15 @@ def pl_buttons(id):
     buttons = [
             [
                 InlineKeyboardButton(
-                    text="🔀 Shuffle Play", callback_data=f"ytpls {id}"
+                    text="🔀 Karışık Oynat", callback_data=f"ytpls {id}"
                 ),                                                   
             ],   
             [
                 InlineKeyboardButton(
-                    text="🎵 Play", callback_data=f"ytpl {id}"
+                    text="🎵 Oynat", callback_data=f"ytpl {id}"
                 ),
                 InlineKeyboardButton(
-                    text="🗑 Close", callback_data="close_btn"
+                    text="👉 Kapat", callback_data="close_btn"
                 ),                                   
             ],                
         ]
@@ -50,8 +50,9 @@ async def get_yt_playlist(url,user):
         return "errrorrr"
     
 async def play_yt_playlist(message):
-    playlist_url = message.text.replace("/play","").replace(f"/play@{BOT_USERNAME}","").strip()
+    playlist_url = message.text.replace("/oynat","").replace(f"/oynat@{BOT_USERNAME}","").strip()
     data = await get_yt_playlist(playlist_url,message.from_user.id)
     pl_id = data[3].replace("http://www.youtube.com/playlist?list=","").strip()
-    text = f"🔮 **Playlist Name:** `{data[0]}`\n🧿 **Playlist By:** `{data[1]}`\n🎰 **Number of Videos:** `{data[2]}`"
+    text = f"🔮 **Çalma Listesi Adı:** `{data[0]}`\n🧿 **Çalma Listesi::** `{data[1]}`\n🎰 **Video Sayısı:** `{data[2]}`"
     await message.reply_photo("Utils/ytplaylist.jpg",caption=text,reply_markup=InlineKeyboardMarkup(pl_buttons(pl_id)))
+
