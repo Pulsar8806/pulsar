@@ -80,4 +80,4 @@ async def basic_cmd(_, query):
 @app.on_callback_query(filters.regex("command_menu"))
 async def command_menu(_, query):
     await query.answer()   
-    await query.message.edit(text="**Choose Basic Command to get Basic Bot Commands\nAnd Advanved Command to get Advanved Bot Commands.**",reply_markup=COMMAND_MENU_BUTTON,parse_mode="markdown")    
+    await query.message.edit(text="**Temel Bot Komutlarını almak için temel komut'u seçin\nVe Advanved Bot Komutlarını almak için Advanved Komutu.**",reply_markup=COMMAND_MENU_BUTTON,parse_mode="markdown")   
