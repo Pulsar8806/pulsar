@@ -39,7 +39,7 @@ from Yukki.Plugins.custom.func import dinle_stream, vplay_stream
 @logging
 @PermissionCheck
 @AssistantAdd
-async def dinleee(_, message: Message):    
+async def dinleaa(_, message: Message):    
     await message.delete()
     if message.chat.id not in db_mem:
         db_mem[message.chat.id] = {}
