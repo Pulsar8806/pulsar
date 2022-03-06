@@ -52,3 +52,4 @@ async def refresh_browse(_, query):
         return await query.message.edit("**⭐️ Şimdi Seçtiğiniz kategoriden dinlemek istediğiniz çalma listesini seçin !!!**",reply_markup=InlineKeyboardMarkup(category_pl_buttons))
     except:
         pass
+
