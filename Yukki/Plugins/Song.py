@@ -25,7 +25,7 @@ __HELP__ = """
 
 @app.on_message(filters.command(["bul", f"bul@{BOT_USERNAME}"]))
 @PermissionCheck
-async def play(_, message: Message):
+async def bul(_, message: Message):
     if message.chat.type == "private":
         pass
     else:
@@ -63,7 +63,7 @@ async def play(_, message: Message):
                 "**Kullanım:**\n\n/bul [Youtube Url'si veya Müzik Adı]\n\nBelirli Sorguyu Karşıdan Yükler."
             )
             return
-        mystic = await message.reply_text("🔍 Sorgunuz Aranıyor...")
+        mystic = await message.reply_text("🔍 Aranıyor...")
         query = message.text.split(None, 1)[1]
         (
             title,
