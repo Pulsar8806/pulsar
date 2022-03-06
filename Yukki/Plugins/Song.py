@@ -13,6 +13,8 @@ from Yukki.Inline import song_download_markup, song_markup
 from Yukki.Utilities.url import get_url
 from Yukki.Utilities.youtube import get_yt_info_query, get_yt_info_query_slider
 
+
+
 loop = asyncio.get_event_loop()
 
 
@@ -49,7 +51,7 @@ async def bul(_, message: Message):
             videoid,
             views,
             channel, 
-        ) = await loop.run_in_executor(None, get_yt_info_query, query)
+        ) = await loop.run_in_executor(None, get_yt_info_query_slider, query)
         if str(duration_min) == "None":
             return await mystic.edit("Pardon! Canlı Video")
         await mystic.delete()
@@ -73,7 +75,7 @@ async def bul(_, message: Message):
             duration_sec,
             thumb,
             videoid,
-        ) = await loop.run_in_executor(None, get_yt_info_query, query)
+        ) = await loop.run_in_executor(None, get_yt_info_query_slider, query)
         if str(duration_min) == "None":
             return await mystic.edit("Pardon! Canlı Video")
         await mystic.delete()
