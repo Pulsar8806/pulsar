@@ -12,12 +12,12 @@ def get_yt_info_id(videoid):
         title = result["title"]
         duration_min = result["duration"]
         thumbnail = result["thumbnails"][0]["url"].split("?")[0]
+        views = result["viewCount"]["short"]
+        channel = result["channel"]["name"]
         if str(duration_min) == "None":
             duration_sec = 0
         else:
-            duration_sec = int(time_to_seconds(duration_min))
-        views = result["viewCount"]["short"]
-        channel = result["channel"]["name"]
+            duration_sec = int(time_to_seconds(duration_min))   
     return title, duration_min, duration_sec, thumbnail, views, channel
 
 
@@ -28,12 +28,12 @@ def get_yt_info_query(query: str):
         duration_min = result["duration"]
         thumbnail = result["thumbnails"][0]["url"].split("?")[0]
         videoid = result["id"]
+        views = result["viewCount"]["short"]
+        channel = result["channel"]["name"]
         if str(duration_min) == "None":
             duration_sec = 0
         else:
-            duration_sec = int(time_to_seconds(duration_min))
-        views = result["viewCount"]["short"]
-        channel = result["channel"]["name"]
+            duration_sec = int(time_to_seconds(duration_min))  
     return title, duration_min, duration_sec, thumbnail, videoid, views, channel
 
 
