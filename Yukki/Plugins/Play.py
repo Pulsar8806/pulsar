@@ -265,7 +265,7 @@ async def Music_Stream(_, CallbackQuery):
     theme = await check_theme(chat_id)
     chat_title = await specialfont_to_normal(chat_title)
     thumb = await gen_thumb(
-                        thumbnail, title, CallbackQuery.from_user.id, "NOW PLAYING", views, duration_min, channel
+                        thumbnail, title, CallbackQuery.from_user.id, "Talia Winamp", views, duration_min, channel
                     )
     if chat_id not in db_mem:
         db_mem[chat_id] = {}
