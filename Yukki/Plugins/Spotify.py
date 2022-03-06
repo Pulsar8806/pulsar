@@ -95,12 +95,12 @@ async def spotify_play(_, message: Message):
         await message.reply_photo(
                 photo="Utils/spotify.png",
                 caption=(
-                    "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/TechZBots/71)]"
+                    "⭐️ **Bana Bir Bağlantı Ver veya Aşağıdaki Gözat düğmesini kullan**\n\n**Kullanım:**\n /spotify [Spotify Parça veya Çalma Listesi veya Albüm Veya Sanatçı Bağlantısı]\n\n➤ **Çalma sınırı çalma listeleri ve albümler için 20 şarkıdır** [[Bu nedir ?](https://t.me/BotDestekGrubu)]"
                 ),
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Browse", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Close", callback_data="close_btn"),]]))
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Gözat", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Close", callback_data="close_btn"),]]))
     else:
         if url:
-            mystic = await message.reply_text("🔄 **Processing URL... Please Wait!**")      
+            mystic = await message.reply_text("🔄 **URL işleniyor... Lütfen bekleyin!**")      
             
             if "track" in url:
                 query = getsp_track_info(url)
@@ -111,7 +111,7 @@ async def spotify_play(_, message: Message):
                         caption=(
                             "⭐️ **Bana Bir Bağlantı Ver veya Aşağıdaki Gözat düğmesini kullan**\n\n**Kullanım:**\n /spotify [Spotify parça veya çalma listesi veya albüm veya sanatçı bağlantısı]\n\n➤ **Çalma sınırı, çalma listeleri ve albümler için 20 şarkıdır** [[Bu nedir ?](https://t.me/BotDestekGrubu)]"
                         ),
-                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Göz at", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Gözat", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
                 (
                     title,
                     duration_min,
@@ -132,9 +132,9 @@ async def spotify_play(_, message: Message):
                     return await message.reply_photo(
                         photo="Utils/spotify.png",
                         caption=(
-                            "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/BotDestekGrubu)]"
+                            "⭐️ **Bana Bir Bağlantı Ver veya Aşağıdaki Gözat düğmesini kullan**\n\n**Kullanım:**\n /spotify [Spotify Parça veya Çalma Listesi veya Albüm Veya Sanatçı Bağlantısı]\n\n➤ **Çalma sınırı çalma listeleri ve albümler için 20 şarkıdır** [[Bu nedir ?](https://t.me/BotDestekGrubu)]"
                         ),
-                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Göz at", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Gözat", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
                 await mystic.delete()
                 return await message.reply_photo(
                         photo="Utils/spotify.png",
@@ -148,9 +148,9 @@ async def spotify_play(_, message: Message):
                     return await message.reply_photo(
                         photo="Utils/spotify.png",
                         caption=(
-                            "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/TechZBots/71)]"
+                            "⭐️ **Bana Bir Bağlantı Ver veya Aşağıdaki Gözat düğmesini kullan**\n\n**Kullanım:**\n /spotify [Spotify Parça veya Çalma Listesi veya Albüm Veya Sanatçı Bağlantısı]\n\n➤ **Çalma sınırı, çalma listeleri ve albümler için 20 şarkıdır** [[Bu nedir ?](https://t.me/BotDestekGrubu)]"
                         ),
-                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Göz at", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Gözat", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
                 await mystic.delete()
                 return await message.reply_photo(
                         photo="Utils/spotify.png",
@@ -164,22 +164,22 @@ async def spotify_play(_, message: Message):
                     return await message.reply_photo(
                         photo="Utils/spotify.png",
                         caption=(
-                            "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/TechZBots/71)]"
+                            "⭐️ **Bana Bir Bağlantı Ver veya Aşağıdaki Gözat düğmesini kullan**\n\n**Kullanım:**\n /spotify [Spotify parça veya çalma listesi veya albüm veya sanatçı bağlantısı]\n\n➤ **Çalma sınırı, çalma listeleri ve albümler için 20 şarkıdır** [[Bu nedir ?](https://t.me/BotDestekGrubu)]"
                         ),
-                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Browse", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Close", callback_data="close_btn"),]]))             
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Gözat", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
                 await mystic.delete()
                 return await message.reply_photo(
                         photo="Utils/spotify.png",
-                        caption=f"🔮 **Artist Name:** {ainfo[0]}\n🧿 **Click the Button below to play top 10 songs of {ainfo[0]}**",
+                        caption=f"🔮 **Sanatçı Adı:** {ainfo[0]}\n🧿 **Aşağıdaki Düğmeye tıklayarak en iyi 10 şarkıyı {ainfo[0]}**",
                         reply_markup=InlineKeyboardMarkup(spotify_buttons(albumid,"ar")))
             else:
                 await mystic.delete()
                 return await message.reply_photo(
                     photo="Utils/spotify.png",
                     caption=(
-                        "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/TechZBots/71)]"
+                        "⭐️ **Bana Bir Bağlantı Ver veya Aşağıdaki Gözat düğmesini kullan**\n\n**Kullanım:**\n /spotify [Spotify parça veya çalma listesi veya albüm veya sanatçı bağlantısı]\n\n➤ **Çalma sınırı, çalma listeleri ve albümler için 20 şarkıdır** [[What is this ?](https://t.me/BotDestekGrubu)]"
                     ),
-                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Browse", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Close", callback_data="close_btn"),]]))             
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Gözat", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
 
 
 @app.on_callback_query(filters.regex("psp"))
@@ -201,7 +201,7 @@ async def play_spotify_playlist(_, CallbackQuery):
             read1 = db_mem[CallbackQuery.message.chat.id]["live_check"]
             if read1:
                 return await CallbackQuery.answer(
-                    "Live Streaming Playing...Stop it to play playlist",
+                    "Canlı Yayın Oynatıyor... Çalma listesi için durdur",
                     show_alert=True,
                 )
             else:
@@ -210,14 +210,14 @@ async def play_spotify_playlist(_, CallbackQuery):
             pass
         if 1 == 2:
             return await CallbackQuery.answer(
-                f"This User has no playlist on servers.", show_alert=True
+                f"Bu Kullanıcının sunucularda çalma listesi yok.", show_alert=True
             )
         else:
             await CallbackQuery.message.delete()
             mystic = await CallbackQuery.message.reply_text(
-                f"**Starting Playing Spotify Playlist.**\n\nRequested By:- {CallbackQuery.from_user.first_name}"
+                f"**Spotify Çalma Listesini Yürütmeye Başlat.**\n\nİsteyen:- {CallbackQuery.from_user.first_name}"
             )
-            msg = f"Queued Playlist:\n\n"
+            msg = f"Sıraya Alınan Çalma Listesi:\n\n"
             j = 0
             for_t = 0
             for_p = 0
@@ -255,9 +255,9 @@ async def play_spotify_playlist(_, CallbackQuery):
                 return await CallbackQuery.message.reply_photo(
                     photo="Utils/spotify.png",
                     caption=(
-                        "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/TechZBots/71)]"
+                        "⭐️ **Bana Bir Bağlantı Ver veya Aşağıdaki Gözat düğmesini kullan**\n\n**Kullanım:**\n /spotify [Spotify Parça veya Çalma Listesi veya Albüm Veya Sanatçı Bağlantısı]\n\n➤ **Çalma sınırı çalma listeleri ve albümler için 20 şarkıdır** [[Bu nedir ?](https://t.me/BotDestekGrubu)]"
                     ),
-                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Browse", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Close", callback_data="close_btn"),]]))             
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Gözat", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
             
             for shikhar in tracks_list:
                 (
@@ -276,7 +276,7 @@ async def play_spotify_playlist(_, CallbackQuery):
                     j += 1
                     for_p = 1
                     msg += f"{j}- {title[:50]}\n"
-                    msg += f"Queued Position- {position}\n\n"
+                    msg += f"Kuyruğa Atılmış Konum- {position}\n\n"
                     if videoid not in db_mem:
                         db_mem[videoid] = {}
                     db_mem[videoid]["username"] = CallbackQuery.from_user.mention
@@ -294,7 +294,7 @@ async def play_spotify_playlist(_, CallbackQuery):
                     for_t = 1
                     thumbnail = thumb                
                     mystic = await mystic.edit(
-                        f"**{MUSIC_BOT_NAME} Downloader**\n\n**Title:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
+                        f"**{MUSIC_BOT_NAME} İndiriyor 📥**\n\n**Başlık:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
                     )
                     downloaded_file = await loop.run_in_executor(
                         None, download, videoid, mystic, title
@@ -302,12 +302,12 @@ async def play_spotify_playlist(_, CallbackQuery):
                     raw_path = await convert(downloaded_file)
                     if not await join_stream(chat_id, raw_path):
                         return await mystic.edit(
-                            "Error Joining Voice Chat. Make sure Voice Chat is Enabled."
+                            "Sesli Sohbete Katılma Hatası. Sesli Sohbet'in Etkin olduğundan emin olun."
                         )
                     theme = await check_theme(chat_id)
                     chat_title = await specialfont_to_normal(chat_title)
                     thumb = await gen_thumb(
-                        thumbnail, title, CallbackQuery.from_user.id, "NOW PLAYING", views, duration_min, channel
+                        thumbnail, title, CallbackQuery.from_user.id, "Spotify", views, duration_min, channel
                     )
                     buttons = primary_markup(
                         videoid,
@@ -325,7 +325,7 @@ async def play_spotify_playlist(_, CallbackQuery):
                     got_queue.append(to_append)
                     await music_on(chat_id)
                     await add_active_chat(chat_id)
-                    cap = f"🎥<b>__Playing:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n💡<b>__Info:__</b> [Get Additional Information](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n👤**__Requested by:__** {CallbackQuery.from_user.mention}"
+                    cap = f"🎥<b>__Oynatılıyor:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n👤**__Talep Eden:__** {CallbackQuery.from_user.mention}"
                     final_output = await CallbackQuery.message.reply_photo(
                         photo=thumb,
                         reply_markup=InlineKeyboardMarkup(buttons),
@@ -335,7 +335,7 @@ async def play_spotify_playlist(_, CallbackQuery):
             await mystic.delete()
             if for_p == 1:
                 m = await CallbackQuery.message.reply_text(
-                    "Pasting Queued Playlist to Bin"
+                    "Sıraya Alınan Çalma Listesini Depo Gözüne Yapıştırma"
                 )
                 link = await paste_queue(msg)
                 preview = link + "/preview.png"
@@ -344,7 +344,7 @@ async def play_spotify_playlist(_, CallbackQuery):
                 if await isPreviewUp(preview):
                     await CallbackQuery.message.reply_photo(
                         photo=preview,
-                        caption=f"**This is Queued Spotify Playlist.**\n\nPlayed by :- {CallbackQuery.from_user.mention}",
+                        caption=f"**Bu Sıralı Spotify Çalma Listesi.**\n\nTarafından oynanır :- {CallbackQuery.from_user.mention}",
                         quote=False,
                         reply_markup=InlineKeyboardMarkup(buttons),
                     )
@@ -356,7 +356,7 @@ async def play_spotify_playlist(_, CallbackQuery):
                     await m.delete()
             else:
                 await CallbackQuery.message.reply_text(
-                    "Only 1 Music in Playlist.. No more music to add in queue."
+                    "Çalma Listesinde Sadece 1 Müzik.. Kuyruğa eklenecek müzik yok."
                 )
             if for_t == 1:
                 await start_timer(
