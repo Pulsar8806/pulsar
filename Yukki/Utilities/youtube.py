@@ -18,7 +18,7 @@ def get_yt_info_id(videoid):
             duration_sec = int(time_to_seconds(duration_min))
         views = result["viewCount"]["short"]
         channel = result["channel"]["name"]
-    return title, duration_min, duration_sec, thumbnail, videoid, views, channel
+    return title, duration_min, duration_sec, thumbnail, views, channel
 
 
 def get_yt_info_query(query: str):
