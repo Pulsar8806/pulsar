@@ -1,6 +1,5 @@
 import asyncio
 import os
-
 import wget
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -17,19 +16,6 @@ from Yukki.Utilities.download import get_formats, get_type
 
 user_time = {}
 flex = {}
-
-__MODULE__ = "Global Ban"
-__HELP__ = """
-
-**Note:**
-Only for Sudo Users.
-
-/gban [Username or Reply to a user]
-- Ban a user globally in Bot's Served Chats and prevents user from using bot commands.
-
-/ungban [Username or Reply to a user]
-- Remove a user from Bot's GBan List.
-"""
 
 
 @app.on_callback_query(filters.regex("close"))
@@ -71,11 +57,11 @@ async def ytdata(_, CallbackQuery):
 
 
 inl = InlineKeyboardMarkup(
-    [[InlineKeyboardButton(text="Downloading......", callback_data=f"down")]]
+    [[InlineKeyboardButton(text="İndiriyor. 📥", callback_data=f"down")]]
 )
 
 upl = InlineKeyboardMarkup(
-    [[InlineKeyboardButton(text="Uploading......", callback_data=f"down")]]
+    [[InlineKeyboardButton(text="Yüklüyor. 📤", callback_data=f"down")]]
 )
 
 
@@ -83,15 +69,15 @@ def inl_mark(videoid, user_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text="Download or Upload Failed......", callback_data=f"down"
+                text="Karşıdan Yükleme veya Karşıya Yükleme Başarısız Oldu......", callback_data=f"down"
             )
         ],
         [
             InlineKeyboardButton(
-                text="⬅️  Go Back", callback_data=f"good {videoid}|{user_id}"
+                text="⬅️  Geri Git", callback_data=f"good {videoid}|{user_id}"
             ),
             InlineKeyboardButton(
-                text="🗑 Close Menu", callback_data=f"close2"
+                text="👉 Menüyü Kapat", callback_data=f"close2"
             ),
         ],
     ]
@@ -109,7 +95,7 @@ async def boom(_, CallbackQuery):
     user_id = CallbackQuery.from_user.id
     type, format_id, videoid = callback_request.split("||")
     mystic = await CallbackQuery.edit_message_text(
-        "Download Started\n\nDownloading speed could be slow. Please hold on..",
+        "Karşıdan Yükleme Başlatıldı.\n\nİndirme hızı yavaş olabilir. Lütfen bekleyin...",
         reply_markup=inl,
     )
     yturl = f"https://www.youtube.com/watch?v={videoid}"
@@ -121,16 +107,13 @@ async def boom(_, CallbackQuery):
         thumb_image_path = result["thumbnails"][0]["url"]
         channel = channel = result["channel"]["name"]
         fetched = f"""
-🔍**Track Downloaded**
-
-❇️**Title:** {title}
-
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-🎥**Channel Name:** {channel}
-🔗**Video Link:** [Link]({yturl})
-
-⚡️ __Youtube Inline Download Powered By {MUSIC_BOT_NAME}__"""
+🔍**İndirileni İzle**
+❇️**Başlık:** {title}
+⏳**Süre:** {duration} Mins
+👀**Görünümler:** `{views}`
+🎥**Kanal Adı:** {channel}
+🔗**Video Bağlantısı:** [Link]({yturl})
+⚡️ __Youtube Satır içi indirme tarafından desteklenmektedir {MUSIC_BOT_NAME}__"""
     filext = "%(title)s.%(ext)s"
     userdir = os.path.join(os.getcwd(), "downloads", str(user_id))
     if not os.path.isdir(userdir):
@@ -236,7 +219,7 @@ async def boom(_, CallbackQuery):
 
 def p_mark(link, channel):
     buttons = [
-        [InlineKeyboardButton(text="Watch on Youtube", url=f"{link}")],
+        [InlineKeyboardButton(text="Youtube'da izleyin", url=f"{link}")],
     ]
     return buttons
 
@@ -245,7 +228,7 @@ async def send_file(
     CallbackQuery, med, filename, videoid, user_id, link, channel
 ):
     await CallbackQuery.edit_message_text(
-        "Upload Started\n\nUploading speed could be slow. Please hold on..",
+        "Karşıya Yükleme Başlatıldı.\n\nYükleme hızı yavaş olabilir. Lütfen bekleyin...",
         reply_markup=upl,
     )
     try:
@@ -304,7 +287,7 @@ def duration(vid_file_path):
             if "duration" in s:
                 return float(s["duration"])
 
-    raise Exception("duration Not found")
+    raise Exception("süre Bulunamadı")
 
 
 async def downloadvideocli(command_to_exec):
@@ -317,7 +300,7 @@ async def downloadvideocli(command_to_exec):
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
-    filename = t_response.split("Merging formats into")[-1].split('"')[1]
+    filename = t_response.split("Biçimleri birleştirme")[-1].split('"')[1]
     return filename
 
 
