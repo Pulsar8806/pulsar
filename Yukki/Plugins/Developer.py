@@ -18,22 +18,22 @@ from Yukki.Utilities.tasks import add_task, rm_task
 
 # Eval and Sh module from WBB
 
-__MODULE__ = "Broadcast"
+__MODULE__ = "Reklam Yayın"
 __HELP__ = """
-**Note:**
-Only for Sudo Users.
+**Not:**
+Sadece Sudo Kullanıcıları İçin.
 
 
-/broadcast [Message or Reply to a Message]
-- Broadcast any message to Bot's Served Chats.
+/reklam [İleti veya İletiyi Yanıtlama]
+- Bot'un Sunulan Sohbetlerine herhangi bir mesaj yayınla.
 
 
-/broadcast_pin [Message or Reply to a Message]
-- Broadcast any message to Bot's Served Chats with message getting Pinned in chat [Disabled Notifications].
+/broadcast_pin [İleti veya İletiyi Yanıtlama]
+- Bot'un Sunulan Sohbetlerine herhangi bir mesajı sohbete sabitlenen mesajla yayınlama [Devre Dışı Bildirimleri].
 
 
-/broadcast_pin_loud [Message or Reply to a Message]
-- Broadcast any message to Bot's Served Chats with message getting Pinned in chat [Enabled Notifications].
+/broadcast_pin_loud [İleti veya İletiyi Yanıtlama]
+- Bot'un Sunulan Sohbetlerine herhangi bir mesajı sohbette Sabitlenen mesajla yayınlama [Etkin Bildirimler].
 """
 
 
@@ -60,7 +60,7 @@ async def edit_or_reply(msg: Message, **kwargs):
 async def executor(client, message):
     if len(message.command) < 2:
         return await edit_or_reply(
-            message, text="__Nigga Give me some command to execute.__"
+            message, text="__Zenci Bana yürütmem için bir emir ver.__"
         )
     try:
         cmd = message.text.split(" ", maxsplit=1)[1]
