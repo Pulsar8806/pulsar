@@ -8,7 +8,7 @@ from pyrogram import Client, filters
 from youtube_search import YoutubeSearch
 from yt_dlp import YoutubeDL
 
-from config import BOT_USERNAME
+from Yukki import (BOT_USERNAME, app, db_mem) 
 from Datebase.filters import command
 
 
