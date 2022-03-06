@@ -10,7 +10,7 @@ from Yukki.Utilities.ping import get_readable_time
 
 
 async def telegram_download(message, mystic):
-    ### Download Media From Telegram by YukkiMusicBot
+    ### Talia Music tarafından yapılan yazılımlar
     left_time = {}
     speed_counter = {}
 
@@ -31,13 +31,11 @@ async def telegram_download(message, mystic):
             completed_size = bytes(current)
             speed = bytes(speed)
             text = f"""
-**{MUSIC_BOT_NAME} Telegram Media Downloader**
-
-**Total FileSize:** {total_size}
-**Completed:** {completed_size}
-**Percentage:** {percentage}%
-
-**Speed:** {speed}/s
+**{MUSIC_BOT_NAME} Telegram Medya İndiricisi**
+**Toplam Dosya Boyutlandırma:** {total_size}
+**Tamamlandı:** {completed_size}
+**Yüzde:** {percentage}%
+**Hız:** {speed}/s
 **ETA:** {eta}"""
             try:
                 await mystic.edit(text)
