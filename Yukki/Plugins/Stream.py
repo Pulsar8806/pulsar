@@ -77,7 +77,7 @@ async def quality_markup(_, CallbackQuery):
             pass
         else:
             return await CallbackQuery.answer(
-                "Sorry! Bot only allows limited number of video calls due to CPU overload issues. Other chats are using video call right now. Try switching to audio or try again later",
+                "Pardon! Bot, CPU aşırı yükleme sorunları nedeniyle yalnızca sınırlı sayıda görüntülü aramaya izin verir. Diğer sohbetler şu anda görüntülü arama kullanıyor. Sese geçmeyi deneyin veya daha sonra yeniden deneyin",
                 show_alert=True,
             )
     if CallbackQuery.message.chat.id not in db_mem:
@@ -113,7 +113,7 @@ async def Live_Videos_Stream(_, CallbackQuery):
     if not limit:
         await CallbackQuery.message.delete()
         return await CallbackQuery.message.reply_text(
-            "**No Limit Defined for Video Calls**\n\nSet a Limit for Number of Maximum Video Calls allowed on Bot by /set_video_limit [Sudo Users Only]"
+            "**Görüntülü Aramalar İçin Sınır Tanımlanmadı**\n\nBot'ta İzin Verilen Maksimum Görüntülü Arama Sayısı İçin Bir Sınır Ayarlama /set_video_limit [Yalnızca Sudo Kullanıcıları]"
         )
     count = len(await get_active_video_chats())
     if int(count) == int(limit):
@@ -148,7 +148,7 @@ async def Live_Videos_Stream(_, CallbackQuery):
     theme = await check_theme(chat_id)
     chat_title = await specialfont_to_normal(chat_title)
     thumb = await gen_thumb(
-                        thumbnail, title, CallbackQuery.from_user.id, "NOW PLAYING", views, duration_min, channel
+                        thumbnail, title, CallbackQuery.from_user.id, "Talia Winamp", views, duration_min, channel
                     )
     nrs, ytlink = await get_m3u8(videoid)
     if nrs == 0:
@@ -203,7 +203,7 @@ async def Videos_Stream(_, CallbackQuery):
     theme = await check_theme(chat_id)
     chat_title = await specialfont_to_normal(chat_title)
     thumb = await gen_thumb(
-                        thumbnail, title, CallbackQuery.from_user.id, "Müzik Akışı", views, duration_min, channel
+                        thumbnail, title, CallbackQuery.from_user.id, "Talia Winap", views, duration_min, channel
                     )
     nrs, ytlink = await get_m3u8(videoid)
     if nrs == 0:
