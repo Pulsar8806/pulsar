@@ -34,7 +34,7 @@ from Yukki.Utilities.videostream import start_stream_video
 from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
                                      get_yt_info_query_slider)
 
-from Yukki.Plugins.custom.func import mplay_stream, vplay_stream
+from Yukki.Plugins.custom.func import dinle_stream, vplay_stream
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from Yukki import BOT_USERNAME, MUSIC_BOT_NAME, app, db_mem
 from Yukki.Core.PyTgCalls import Queues
@@ -67,15 +67,15 @@ def spotify_buttons(id,type):
     buttons = [
             [
                 InlineKeyboardButton(
-                    text="🔀 Shuffle Play", callback_data=f"psps{type} {id}"
+                    text="🔀 Karışık Oynat", callback_data=f"psps{type} {id}"
                 ),                                                   
             ],   
             [
                 InlineKeyboardButton(
-                    text="🎵 Play", callback_data=f"psp{type} {id}"
+                    text="🎵 Oynat", callback_data=f"psp{type} {id}"
                 ),
                 InlineKeyboardButton(
-                    text="🗑 Close", callback_data="close_btn"
+                    text="👉 Kapat", callback_data="close_btn"
                 ),                                   
             ],                
         ]
@@ -123,7 +123,7 @@ async def spotify_play(_, message: Message):
                 ) = get_yt_info_query(query)
                 await mystic.delete()
                 MusicData = f"MusicStream {videoid}|{duration_min}|{message.from_user.id}"
-                return await mplay_stream(message,MusicData)
+                return await dinle_stream(message,MusicData)
             elif "playlist" in url:                
                 playlist_id = url[34:56].strip()
                 pinfo = await getsp_playlist_info(url,message.from_user.id)
