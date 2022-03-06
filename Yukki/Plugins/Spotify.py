@@ -34,7 +34,7 @@ from Yukki.Utilities.videostream import start_stream_video
 from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
                                      get_yt_info_query_slider)
 
-from Yukki.Plugins.custom.func import dinle_stream, vplay_stream
+from Yukki.Plugins.custom.func import mplay_stream, vplay_stream
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from Yukki import BOT_USERNAME, MUSIC_BOT_NAME, app, db_mem
 from Yukki.Core.PyTgCalls import Queues
@@ -109,9 +109,9 @@ async def spotify_play(_, message: Message):
                     return await message.reply_photo(
                         photo="Utils/spotify.png",
                         caption=(
-                            "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/TechZBots/71)]"
+                            "⭐️ **Bana Bir Bağlantı Ver veya Aşağıdaki Gözat düğmesini kullan**\n\n**Kullanım:**\n /spotify [Spotify parça veya çalma listesi veya albüm veya sanatçı bağlantısı]\n\n➤ **Çalma sınırı, çalma listeleri ve albümler için 20 şarkıdır** [[Bu nedir ?](https://t.me/BotDestekGrubu)]"
                         ),
-                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Browse", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Close", callback_data="close_btn"),]]))             
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Göz at", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
                 (
                     title,
                     duration_min,
@@ -122,8 +122,8 @@ async def spotify_play(_, message: Message):
                     channel
                 ) = get_yt_info_query(query)
                 await mystic.delete()
-                MusicData = f"MusicStream {videoid}|{duration_min}|{message.from_user.id}"
-                return await dinle_stream(message,MusicData)
+                MusicData = f"Müzik Akışı {videoid}|{duration_min}|{message.from_user.id}"
+                return await mplay_stream(message,MusicData)
             elif "playlist" in url:                
                 playlist_id = url[34:56].strip()
                 pinfo = await getsp_playlist_info(url,message.from_user.id)
@@ -132,13 +132,13 @@ async def spotify_play(_, message: Message):
                     return await message.reply_photo(
                         photo="Utils/spotify.png",
                         caption=(
-                            "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/TechZBots/71)]"
+                            "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/BotDestekGrubu)]"
                         ),
-                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Browse", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Close", callback_data="close_btn"),]]))             
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Göz at", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
                 await mystic.delete()
                 return await message.reply_photo(
                         photo="Utils/spotify.png",
-                        caption=f"🔮 **Playlist Name:** {pinfo[0]}\n🧿 **Playlist By:** {pinfo[1]}",
+                        caption=f"🔮 **Çalma Listesi Adı:** {pinfo[0]}\n🧿 **Çalma Listesi::** {pinfo[1]}",
                         reply_markup=InlineKeyboardMarkup(spotify_buttons(playlist_id,"pl")))
             elif "album" in url:
                 ainfo = await getsp_album_info(url,message.from_user.id)                
@@ -150,11 +150,11 @@ async def spotify_play(_, message: Message):
                         caption=(
                             "⭐️ **Give me a Link Or Use Browse Button Below**\n\n**Usage:**\n /spotify [Spotify Track Or Playlist Or Album Or Artist Link]\n\n➤ **Playing limit is 20 songs for playlists and albums** [[What is this ?](https://t.me/TechZBots/71)]"
                         ),
-                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Browse", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Close", callback_data="close_btn"),]]))             
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🔍 Göz at", callback_data="cat pg1"),InlineKeyboardButton(text="🔄 Kapat", callback_data="close_btn"),]]))             
                 await mystic.delete()
                 return await message.reply_photo(
                         photo="Utils/spotify.png",
-                        caption=f"🔮 **Album Name:** {ainfo[0]}\n🧿 **Album By:** {ainfo[1]}",
+                        caption=f"🔮 **Albüm Adı:** {ainfo[0]}\n🧿 **Albüme Göre:** {ainfo[1]}",
                         reply_markup=InlineKeyboardMarkup(spotify_buttons(albumid,"ab")))
             elif "artist" in url:                
                 ainfo = await getsp_artist_info(url)                
