@@ -7,7 +7,7 @@ import wget
 from pyrogram import Client, filters
 from youtube_search import YoutubeSearch
 from yt_dlp import YoutubeDL
-from Yukki.helper.filters import command 
+from helper.filters import command 
 from Yukki import (BOT_USERNAME, app, db_mem) 
 
 
