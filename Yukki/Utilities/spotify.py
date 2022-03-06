@@ -1,4 +1,4 @@
-# dont steal these
+# bunları çalma
 client_id = "817ef3b667ae41fa904568b4eeaee96d"
 client_secret = "8130539ee3cf4b30bc24d2f694a60838"
 
