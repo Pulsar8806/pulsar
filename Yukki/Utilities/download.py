@@ -134,7 +134,7 @@ async def get_formats(CallbackQuery, videoid, user_id, type):
                 ],
                 [
                     InlineKeyboardButton(
-                        text="🔙 Geri Git",
+                        text="⬅️  Geri Git",
                         callback_data=f"good {videoid}|{user_id}",
                     ),
                     InlineKeyboardButton(
@@ -152,7 +152,7 @@ async def get_formats(CallbackQuery, videoid, user_id, type):
                 ],
                 [
                     InlineKeyboardButton(
-                        text="🔙  Geri Git",
+                        text="⬅️  Geri Git",
                         callback_data=f"good {videoid}|{user_id}",
                     ),
                     InlineKeyboardButton(
@@ -173,7 +173,7 @@ async def get_formats(CallbackQuery, videoid, user_id, type):
                 ],
                 [
                     InlineKeyboardButton(
-                        text="🔙  Geri Git",
+                        text="⬅️  Geri Git",
                         callback_data=f"good {videoid}|{user_id}",
                     ),
                     InlineKeyboardButton(
@@ -246,7 +246,7 @@ async def get_formats(CallbackQuery, videoid, user_id, type):
                 ],
                 [
                     InlineKeyboardButton(
-                        text="🔙 Geri Git",
+                        text="⬅️  Geri Git",
                         callback_data=f"good {videoid}|{user_id}",
                     ),
                     InlineKeyboardButton(
@@ -265,7 +265,7 @@ async def get_formats(CallbackQuery, videoid, user_id, type):
 def get_type(type, format, videoid, user_id):
     if type == "audio":
         a1 = InlineKeyboardButton(
-            text=f"Ses indir",
+            text=f"Mp3 İndir",
             callback_data=f"boom audio||{format}||{videoid}",
         )
         a2 = InlineKeyboardButton(
@@ -289,7 +289,7 @@ def get_type(type, format, videoid, user_id):
             ],
             [
                 InlineKeyboardButton(
-                    text="🔙  Geri Git",
+                    text="⬅️  Geri Git",
                     callback_data=f"good {videoid}|{user_id}",
                 ),
                 InlineKeyboardButton(
