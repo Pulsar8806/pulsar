@@ -21,13 +21,13 @@ def others_markup(videoid, user_id):
                 callback_data=f"your_playlist {videoid}|{user_id}",
             ),
             InlineKeyboardButton(
-                text="☑️ Grubun Listesi",
+                text="☑️ Grub Listesi",
                 callback_data=f"group_playlist {videoid}|{user_id}",
             ),
         ],
         [
             InlineKeyboardButton(
-                text="📥 Anlık indir",
+                text="☑️ Anlık indir",
                 callback_data=f"audio_video_download {videoid}|{user_id}",
             )
         ],
