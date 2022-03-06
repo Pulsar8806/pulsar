@@ -176,7 +176,7 @@ def getsp_categories():
                     text="❮", callback_data=f"cat pg3"
                 ),
                 InlineKeyboardButton(
-                    text="Close", callback_data="close_btn"
+                    text="Kapat", callback_data="close_btn"
                 ),
                 InlineKeyboardButton(
                     text="❯", callback_data="cat pg2"
@@ -252,7 +252,7 @@ def getsp_categories():
                     text="❮", callback_data=f"cat pg2"
                 ),
                 InlineKeyboardButton(
-                    text="Close", callback_data="close_btn"
+                    text="Kapat", callback_data="close_btn"
                 ),
                 InlineKeyboardButton(
                     text="❯", callback_data="cat pg1"
