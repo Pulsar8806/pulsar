@@ -3,35 +3,35 @@ from Yukki import BOT_NAME, BOT_USERNAME
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 START_TEXT = f"""
-✨ **Hello MENTION !**
+✨ **Merhaba MENTION !**
 
-**You can use [{BOT_NAME}](https://t.me/{BOT_USERNAME}) to play Music or Videos in your Group Video Chat.**
+**Kullanabilirsiniz [{BOT_NAME}](https://t.me/{BOT_USERNAME}) Grup Görüntülü Sohbetinizde Müzik veya Video oynatmak için.**
 
-💡 **Find out all the Bot's commands and how they work by clicking on the ➤ 📚 Commands button**
+💡 **Bot'un tüm komutlarını ve nasıl çalıştıklarını öğrenin. ➤ 📚 Komutlar düğmesi**
 """
 
 COMMANDS_TEXT = f"""
-✨ **Hello MENTION !**
+✨ **Merhaba MENTION !**
 
-**Click on the buttons below to know my commands.**
+**Komutlarımı öğrenmek için aşağıdaki düğmelere tıklayın.**
 """
 
 START_BUTTON_GROUP = InlineKeyboardMarkup(
     [   
         [
             InlineKeyboardButton(
-                text="📚 Commands", callback_data="command_menu"
+                text="📚 Komut", callback_data="command_menu"
             ),
             InlineKeyboardButton(
-                text="🔧 Settings", callback_data="settingm"
+                text="🔧 Ayarlar", callback_data="settingm"
             ),                                   
         ],
         [
             InlineKeyboardButton(
-                text="📣 Updates Channel", url="https://t.me/TechZBots"
+                text="📣 Resmi Kanal", url="https://t.me/Sohbetdestek"
             ),
             InlineKeyboardButton(
-                text="💬 Support Group", url="https://t.me/TechZBots_Support"
+                text="💬 Destek Grubu", url="https://t.me/BotDestekGrubu"
             ),                       
         ],        
     ]
@@ -40,20 +40,20 @@ START_BUTTON_GROUP = InlineKeyboardMarkup(
 START_BUTTON_PRIVATE = InlineKeyboardMarkup(
     [   [
             InlineKeyboardButton(
-                text="➕ Add me to Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+                text="➕ Beni Gruba Ekle ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
             ),            
         ],
         [   
             InlineKeyboardButton(
-                text="📚 Commands", callback_data="command_menu"
+                text="📚 Komut", callback_data="command_menu"
             ),                       
         ],
         [
             InlineKeyboardButton(
-                text="📣 Updates Channel", url="https://t.me/TechZBots"
+                text="📣 Resmi Kanal", url="https://t.me/Sohbetdestek"
             ),
             InlineKeyboardButton(
-                text="💬 Support Group", url="https://t.me/TechZBots_Support"
+                text="💬 Destek Grubu", url="https://t.me/BotDestekGrubu"
             ),                       
         ],        
     ]
@@ -62,26 +62,26 @@ START_BUTTON_PRIVATE = InlineKeyboardMarkup(
 COMMANDS_BUTTON_USER = InlineKeyboardMarkup(
     [   [
             InlineKeyboardButton(
-                text="Admin Commands", callback_data="admin_cmd"
+                text="Yönetici Komutları", callback_data="admin_cmd"
             ),
             InlineKeyboardButton(
-                text="Bot Commands", callback_data="bot_cmd"
+                text="Bot Komutları", callback_data="bot_cmd"
             ),            
         ],
         [
             InlineKeyboardButton(
-                text="Play Commands", callback_data="play_cmd"
+                text="Komutları Yürüt", callback_data="play_cmd"
             ),            
             InlineKeyboardButton(
-                text="Extra Commands", callback_data="extra_cmd"
+                text="Ek Komutlar", callback_data="extra_cmd"
             ),                                   
         ],
         [
             InlineKeyboardButton(
-                text="↪️ Back", callback_data="command_menu"
+                text="↪️ Geri", callback_data="command_menu"
             ),
             InlineKeyboardButton(
-                text="🔄 Close", callback_data="close_btn"
+                text="🔄 Kapat", callback_data="close_btn"
             ),            
         ],                
     ]
@@ -90,31 +90,31 @@ COMMANDS_BUTTON_USER = InlineKeyboardMarkup(
 COMMANDS_BUTTON_SUDO = InlineKeyboardMarkup(
     [   [
             InlineKeyboardButton(
-                text="Admin Commands", callback_data="admin_cmd"
+                text="Yönetici Komutları", callback_data="admin_cmd"
             ),
             InlineKeyboardButton(
-                text="Bot Commands", callback_data="bot_cmd"
+                text="Bot Komutları", callback_data="bot_cmd"
             ),            
         ],
         [
             InlineKeyboardButton(
-                text="Play Commands", callback_data="play_cmd"
+                text="Komutları Yürüt", callback_data="play_cmd"
             ),
             InlineKeyboardButton(
-                text="Sudo Commands", callback_data="sudo_cmd"
+                text="Sudo Komutları", callback_data="sudo_cmd"
             ),            
         ],
         [
             InlineKeyboardButton(
-                text="Extra Commands", callback_data="extra_cmd"
+                text="Ek Komutlar", callback_data="extra_cmd"
             ),                                   
         ],
         [
             InlineKeyboardButton(
-                text="↪️ Back", callback_data="command_menu"
+                text="↪️ Geri", callback_data="command_menu"
             ),
             InlineKeyboardButton(
-                text="🔄 Close", callback_data="close_btn"
+                text="🔄 Kapat", callback_data="close_btn"
             ),            
         ],                
     ]
@@ -123,10 +123,10 @@ COMMANDS_BUTTON_SUDO = InlineKeyboardMarkup(
 BACK_BUTTON = InlineKeyboardMarkup(
     [   [
             InlineKeyboardButton(
-                text="↪️ Back", callback_data="advanced_cmd"
+                text="↪️ Geri", callback_data="advanced_cmd"
             ),
             InlineKeyboardButton(
-                text="🔄 Close", callback_data="close_btn"
+                text="🔄 Kapat", callback_data="close_btn"
             ),            
         ],                        
     ]
@@ -135,15 +135,15 @@ BACK_BUTTON = InlineKeyboardMarkup(
 SUDO_BACK_BUTTON = InlineKeyboardMarkup(
     [   [
             InlineKeyboardButton(
-                text="More Sudo Commands", url="https://telegra.ph/SiestaXMusic-Sudo-Commands-02-08"
+                text="Diğer Sudo Komutları", url="https://telegra.ph/SiestaXMusic-Sudo-Commands-02-08"
             ),                        
         ],
         [
             InlineKeyboardButton(
-                text="↪️ Back", callback_data="advanced_cmd"
+                text="↪️ Geri", callback_data="advanced_cmd"
             ),
             InlineKeyboardButton(
-                text="🔄 Close", callback_data="close_btn"
+                text="🔄 Kapat", callback_data="close_btn"
             ),            
         ],                        
     ]
@@ -151,86 +151,86 @@ SUDO_BACK_BUTTON = InlineKeyboardMarkup(
 
 
 ADMIN_TEXT = f"""
-Here is the help for **Admin Commands:**
+İşte yardım **Yönetici Komutları:**
 
 
---**ADMIN ONLY COMMANDS WITH MANAGE VC RIGHT:**--
+--**YALNIZCA SESİ YÖNETEN YÖNET KOMUTLARI:**--
 
-/pause 
-- Pause the playing music on voice chat.
+/durdur 
+- Sesli sohbette çalan müziği duraklatma.
 
-/resume
-- Resume the paused music on voice chat.
+/devam 
+- Sesli sohbette duraklatılmış müziği sürdürme.
 
-/skip
-- Skip the current playing music on voice chat
+/atla 
+- Sesli sohbette geçerli müzik çalmayı atlama
 
-/end or /stop
-- Stop the playout.
-
-
---**Authorised Users List:**--
-
-**{BOT_NAME} has a additional feature for non-admin users who want to use admin commands**
-- Auth users can skip, pause, stop, resume Voice Chats even without Admin Rights.
+/son 
+- Müzik çalmayı durdurma.
 
 
-/auth [Username or Reply to a Message] 
-- Add a user to AUTH LIST of the group.
+--**Yetkili Kullanıcılar Listesi:**--
 
-/unauth [Username or Reply to a Message] 
-- Remove a user from AUTH LIST of the group.
+**{BOT_NAME} yönetici komutlarını kullanmak isteyen yönetici olmayan kullanıcılar için ek bir özelliğe sahiptir**
+- Kimlik doğrulama kullanıcıları, Yönetici Hakları olmadan bile Sesli Sohbetleri atlayabilir, duraklatabilir, durdurabilir, sürdürebilir.
+
+
+/auth [Kullanıcı Adı veya İletiyi Yanıtlama] 
+- Grubun AUTH LİSTESİ'ne kullanıcı ekleme.
+
+/unauth [Kullanıcı Adı veya İletiyi Yanıtlama] 
+- Kullanıcıyı grubun AUTH Listesinden kaldırma.
 
 /authusers 
-- Check AUTH LIST of the group.
+- Grubun AUTH LIST'ini denetleyin.
 """
 
 BOT_TEXT = """
-Here is the help for **Bot Commands:**
+İşte yardım **Bot Komutları:**
 
 
 /start 
-- Start the Music Bot.
+- Müzik Bot'ını başlat.
 
 /help 
-- Get Commands Helper Menu with detailed explanations of commands.
+- Komutların ayrıntılı açıklamalarını içeren Komutlar Yardımcısı Menüsünü Alıp Al.
 
 /settings 
-- Get Settings dashboard of a group. You can manage Auth Users Mode. Commands Mode from here.
+- Bir grubun Ayarlar panosunu alıp alın. Kimlik Doğrulama Kullanıcıları Modu'nu yönetebilirsiniz. Buradan Komut modu.
 
 /ping
-- Ping the Bot and check Ram, Cpu etc stats of Music Bot."""
+- Bot ping ve Kontrol Ram, Cpu vb Müzik Bot istatistikleri."""
 
 PLAY_TEXT = """
-Here is the help for **Play Commands:**
+İşte yardım fo **Oynat Komut:**
 
 
---**Youtube and Telegram Files:**--
+--**Youtube ve Telegram Dosyaları:**--
 
-/play __[Music Name]__(Bot will search on Youtube)
-/play __[Youtube Track link or Playlist]__
-/play __[Video, Live, M3U8 Links]__
-/play __[Reply to a Audio or Video File]__
-- Stream Video or Music on Voice Chat by selecting inline Buttons you get
+/oynat __[Müzik Adı]__(Bot Youtube'da arama yapacak)
+/oynat __[Youtube Bağlantıyı veya Çalma Listesini izleme]__
+/oynat __[Video, Canlı, M3U8 Bağlantıları]__
+/oynat __[Ses veya Video Dosyasını Yanıtlama]__
+- Elde ettiğiniz satır içi Düğmeler'i seçerek Sesli Sohbette Video veya Müzik Akışı
 
 
---**Playlists:**--
+--**Çalma Listeleri:**--
 
 /playplaylist 
-- Start playing Your Saved Playlist.
+- Kaydedilmiş Çalma Listenizi oynatmaya başlayın.
 
 /playlist 
-- Check Your Saved Playlist On Servers.
+- Sunucularda Kayıtlı Çalma Listenizi Denetleme.
 
 /delmyplaylist
-- Delete any saved music in your playlist
+- Çalma listenizdeki kaydedilmiş müzikleri silme
 
 /delgroupplaylist
-- Delete any saved music in your group's playlist [Requires Admin Rights.]
+- Grubunuzun çalma listesindeki kaydedilmiş müzikleri silme [Yönetici Hakları Gerektirir.]
 """
 
 SUDO_TEXT = f"""
-Here is the help for **Sudo Commands:**
+İşte yardımı **Sudo Komutları:**
 
 **<u>ADD & REMOVE SUDO USERS :</u>**
 /addsudo [Username or Reply to a user]
@@ -277,9 +277,8 @@ BASIC_TEXT = """
 
 /start - start the bot
 /help - get help message
-/play - play songs or videos in vc
-/mplay - play songs directly in vc
-/vplay - play videos directly in vc
+/oynat - play songs or videos in vc
+/dinle - play songs directly in vc
 /spotify - play songs from spotify
 /resso - play songs from resso
 /lyrics - get lyrics of song
