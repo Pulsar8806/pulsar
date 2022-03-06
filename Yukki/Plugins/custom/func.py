@@ -56,13 +56,13 @@ from Yukki.Utilities.timer import start_timer
 
 loop = asyncio.get_event_loop()
 
-async def dinle_stream(message,MusicData):
+async def mplay_stream(message,MusicData):
     if message.chat.id not in db_mem:
         db_mem[message.chat.id] = {}
     try:
         read1 = db_mem[message.chat.id]["live_check"]
         if read1:
-            return await message.reply_text("Live Streaming Playing...Stop it to play music")
+            return await message.reply_text("Canlı Yayın Oynatıyor... Müzik çalmak için durdurun")
         else:
             pass
     except:
@@ -75,7 +75,7 @@ async def dinle_stream(message,MusicData):
     if str(duration) == "None":
         buttons = livestream_markup("720", videoid, duration, user_id)
         return await message.reply_text(
-            "**Live Stream Detected**\n\nWant to play live stream? This will stop the current playing musics(if any) and will start streaming live video.",
+            "**Canlı Akış Algılandı**\n\nCanlı yayın oynamak ister misiniz? Bu, geçerli müzik çalmayı durdurur (varsa) ve canlı video akışına başlar.",
             reply_markup=InlineKeyboardMarkup(buttons),
         )    
     await message.delete()
@@ -89,11 +89,11 @@ async def dinle_stream(message,MusicData):
     ) = get_yt_info_id(videoid)
     if duration_sec > DURATION_LIMIT:
         return await message.reply_text(
-            f"**Duration Limit Exceeded**\n\n**Allowed Duration: **{DURATION_LIMIT_MIN} minute(s)\n**Received Duration:** {duration_min} minute(s)"
+            f"**Süre Sınırı Aşıldı**\n\n**İzin Verilen Süre: **{DURATION_LIMIT_MIN} dakika\n**Alınan Süre:** {duration_min} dakikalar"
         )
     mystic = await message.reply_text(f"İşleniyor:- {title[:20]}")
     await mystic.edit(
-        f"**{MUSIC_BOT_NAME} Downloader**\n\n**Title:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
+        f"**{MUSIC_BOT_NAME} İndiriyor 📥**\n\n**Başlık:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
     )
     downloaded_file = await loop.run_in_executor(
         None, download, videoid, mystic, title
@@ -160,7 +160,7 @@ async def custom_start_stream(
         final_output = await message.reply_photo(
             photo=thumb,
             caption=(
-                f"🎬<b>__Song:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n⏳<b>__Duration:__</b> {duration_min} \n💡<b>__Info:__</b> [Get Additional Information](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n👤<b>__Requested by:__ </b>{message.from_user.mention} \n🚧<b>__Queued at:__</b> <b>#{position}!</b>"
+                f"🎬<b>__Şarkı:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n⏳<b>__Süre:__</b> {duration_min} \n👤<b>__Talep Eden:__ </b>{message.from_user.mention} \n🚧<b>__Sıraya Alındı:__</b> <b>#{position}!</b>"
             ),
             reply_markup=InlineKeyboardMarkup(buttons),
         )
@@ -183,7 +183,7 @@ async def custom_start_stream(
             videoid, message.from_user.id, duration_min, duration_min
         )
         await mystic.delete()
-        cap = f"🎥<b>__Playing:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n💡<b>__Info:__</b> [Get Additional Information](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n👤**__Requested by:__** {message.from_user.mention}"
+        cap = f"🎥<b>__Oynatılıyor:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n👤**__Talep Eden:__** {message.from_user.mention}"
         final_output = await message.reply_photo(
             photo=thumb,
             reply_markup=InlineKeyboardMarkup(buttons),
@@ -206,20 +206,20 @@ async def vplay_stream(message,VideoData,mystic):
     if not limit:
         await message.delete()
         return await message.reply_text(
-            "**No Limit Defined for Video Calls**\n\nSet a Limit for Number of Maximum Video Calls allowed on Bot by /set_video_limit [Sudo Users Only]"
+            "**Görüntülü Aramalar İçin Sınır Tanımlanmadı**\n\nBot'ta İzin Verilen Maksimum Görüntülü Arama Sayısı İçin Bir Sınır Ayarlama /set_video_limit [Yalnızca Sudo Kullanıcıları]"
         )
     count = len(await get_active_video_chats())
     if int(count) == int(limit):
         if await is_active_video_chat(message.chat.id):
             pass
         else:
-            return await message.reply_text("Sorry! Bot only allows limited number of video calls due to CPU overload issues. Other chats are using video call right now. Try switching to audio or try again later")
+            return await message.reply_text("Pardon! Bot, CPU aşırı yükleme sorunları nedeniyle yalnızca sınırlı sayıda görüntülü aramaya izin verir. Diğer sohbetler şu anda görüntülü arama kullanıyor. Sese geçmeyi deneyin veya daha sonra yeniden deneyin")
     if message.chat.id not in db_mem:
         db_mem[message.chat.id] = {}
     try:
         read1 = db_mem[message.chat.id]["live_check"]
         if read1:
-            return await message.reply_text("Live Streaming Playing...Stop it to play music")
+            return await message.reply_text("Canlı Yayın Oynatıyor... Müzik çalmak için durdurun")
         else:
             pass
     except:
@@ -228,7 +228,7 @@ async def vplay_stream(message,VideoData,mystic):
     callback_request = callback_data.split(None, 1)[1]
     videoid, duration, user_id = callback_request.split("|")    
     
-    QualityData = f"VideoStream 480|{videoid}|{duration}|{user_id}"
+    QualityData = f"Video Akışı 480|{videoid}|{duration}|{user_id}"
 
     callback_data = QualityData.strip()
     callback_request = callback_data.split(None, 1)[1]
@@ -239,7 +239,7 @@ async def vplay_stream(message,VideoData,mystic):
     if str(duration) == "None":
         buttons = livestream_markup(quality, videoid, duration, user_id)
         return await message.reply_text(
-            "**Live Stream Detected**\n\nWant to play live stream? This will stop the current playing musics(if any) and will start streaming live video.",
+            "**Canlı Akış Algılandı**\n\nCanlı yayın oynamak ister misiniz? Bu, geçerli müzik çalmayı durdurur (varsa) ve canlı video akışına başlar.",
             reply_markup=InlineKeyboardMarkup(buttons),
         )    
     (
@@ -252,17 +252,17 @@ async def vplay_stream(message,VideoData,mystic):
     ) = get_yt_info_id(videoid)
     if duration_sec > DURATION_LIMIT:
         return await message.reply_text(
-            f"**Duration Limit Exceeded**\n\n**Allowed Duration: **{DURATION_LIMIT_MIN} minute(s)\n**Received Duration:** {duration_min} minute(s)"
+            f"**Süre Sınırı Aşıldı**\n\n**İzin Verilen Süre: **{DURATION_LIMIT_MIN} dakikalar\n**Alınan Süre:** {duration_min} dakika"
         )    
     theme = await check_theme(chat_id)
     chat_title = await specialfont_to_normal(chat_title)
     thumb = await gen_thumb(
-                        thumbnail, title, message.from_user.id, "NOW PLAYING", views, duration_min, channel
+                        thumbnail, title, message.from_user.id, "Talia Winamp", views, duration_min, channel
                     )
     nrs, ytlink = await get_m3u8(videoid)
     if nrs == 0:
         return await message.reply_text(
-            "Video Formats not Found.."
+            "Video Biçimleri Bulunamadı.."
         )
     await custom_video_stream(
         message,
@@ -321,7 +321,7 @@ async def custom_video_stream(
         final_output = await message.reply_photo(
             photo=thumb,
             caption=(
-                f"🎬<b>Video:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n⏳<b>__Duration:__</b> {duration_min} \n💡<b>__Info:__</b> [Get Additional Information](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n👤<b>__Requested by:__ </b>{message.from_user.mention} \n🚧<b>__ Video Queued at:__</b> <b>#{position}!</b>"
+                f"🎬<b>Video:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n⏳<b>__Süre:__</b> {duration_min} \n👤<b>__Talep Eden:__ </b>{message.from_user.mention} \n🚧<b>__ Video Sıraya Alındı:__</b> <b>#{position}!</b>"
             ),
             reply_markup=InlineKeyboardMarkup(buttons),
         )        
@@ -332,7 +332,7 @@ async def custom_video_stream(
             message.chat.id, link, quality
         ):
             return await message.reply_text(
-                f"Error Joining Voice Chat."
+                f"Sesli Sohbete Katılma Hatası."
             )
         get_queue[message.chat.id] = []
         got_queue = get_queue.get(message.chat.id)
@@ -348,7 +348,7 @@ async def custom_video_stream(
         buttons = primary_markup(
             videoid, message.from_user.id, duration_min, duration_min
         )
-        cap = f"**Video Streaming**\n\n🎥<b>__Playing:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n💡<b>__Info:__</b> [Get Additional Information](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n👤**__Requested by:__** {message.from_user.mention}"
+        cap = f"**Video Akışı**\n\n🎥<b>__Oynatılıyor:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n👤**__Talep Eden:__** {message.from_user.mention}"
         final_output = await message.reply_photo(
             photo=thumb,
             reply_markup=InlineKeyboardMarkup(buttons),
