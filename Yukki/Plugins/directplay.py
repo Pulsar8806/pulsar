@@ -33,7 +33,7 @@ from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
 from Yukki.Plugins.custom.func import mplay_stream, vplay_stream
 
 @app.on_message(
-    filters.command(["mplay", f"mplay@{BOT_USERNAME}"]) & filters.group
+    filters.command(["dinle", f"dinle@{BOT_USERNAME}"]) & filters.group
 )
 @checker
 @logging
@@ -45,7 +45,7 @@ async def mplayaa(_, message: Message):
         db_mem[message.chat.id] = {}
     if message.sender_chat:
         return await message.reply_text(
-            "You're an __Anonymous Admin__ in this Chat Group!\nRevert back to User Account From Admin Rights."
+            "Hey__Anonim yönetici__ bu Sohbet Grubunda!\nYönetici Haklarından Kullanıcı Hesabına Geri Dön."
         )
     audio = (
         (message.reply_to_message.audio or message.reply_to_message.voice)
@@ -60,13 +60,13 @@ async def mplayaa(_, message: Message):
     url = get_url(message)
     if audio:
         mystic = await message.reply_text(
-            "🔄 Processing Audio... Please Wait!"
+            "🔄 **Ses İşleniyor... Lütfen bekleyin!**"
         )
         try:
             read = db_mem[message.chat.id]["live_check"]
             if read:
                 return await mystic.edit(
-                    "Live Streaming Playing...Stop it to play music"
+                    "Canlı Yayın Oynatıyor... Müzik çalmak için durdurun"
                 )
             else:
                 pass
@@ -74,13 +74,13 @@ async def mplayaa(_, message: Message):
             pass
         if audio.file_size > 1073741824:
             return await mystic.edit_text(
-                "Audio File Size Should Be Less Than 150 mb"
+                "Ses Dosyası Boyutu 150 MB'den Az Olmalıdır"
             )
         duration_min = seconds_to_min(audio.duration)
         duration_sec = audio.duration
         if (audio.duration) > DURATION_LIMIT:
             return await mystic.edit_text(
-                f"**Duration Limit Exceeded**\n\n**Allowed Duration: **{DURATION_LIMIT_MIN} minute(s)\n**Received Duration:** {duration_min} minute(s)"
+                f"**Süre Sınırı Aşıldı**\n\n**İzin Verilen Süre: **{DURATION_LIMIT_MIN} minute(s)\n**Alınan Süre:** {duration_min} minute(s)"
             )
         file_name = (
             audio.file_unique_id
@@ -101,15 +101,15 @@ async def mplayaa(_, message: Message):
             message,
             file,
             "smex1",
-            "Given Audio Via Telegram",
+            "Telegram ile Verilen Ses",
             duration_min,
             duration_sec,
             mystic,
         )
     elif video:
-        return await message.reply_text("Use /play or /vplay commands to play video files in voice chat.")
+        return await message.reply_text("Kullan /oynat veya /vplay sesli sohbette video dosyalarını oynatma komutları.")
     elif url:
-        mystic = await message.reply_text("🔄 Processing URL... Please Wait!")
+        mystic = await message.reply_text("🔄 URL işleniyor... Lütfen bekleyin!")
         if not message.reply_to_message:
             query = message.text.split(None, 1)[1]
         else:
@@ -134,12 +134,12 @@ async def mplayaa(_, message: Message):
             await message.reply_photo(
                 photo="Utils/Playlist.jpg",
                 caption=(
-                    "**Usage:** /play [Music Name or Youtube Link or Reply to Audio]\n\nIf you want to play Playlists! Select the one from Below."
+                    "**Kuklan:** /oynat [Müzik Adı veya Youtube Bağlantısı veya Sese Yanıt]\n\nÇalma Listelerini çalmak istiyorsanız! Aşağıdakilerden birini seçin."
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
             return
-        mystic = await message.reply_text("🔍 **Searching**...")
+        mystic = await message.reply_text("🔍 **Sizin için arıyorum**...")
         query = message.text.split(None, 1)[1]
         (
             title,
@@ -198,13 +198,13 @@ async def vplayaaa(_, message: Message):
                     "Sorry! Bot only allows limited number of video calls due to CPU overload issues. Many other chats are using video call right now. Try switching to audio or try again later"
                 )
         mystic = await message.reply_text(
-            "🔄 Processing Video... Please Wait!"
+            "🔄 **Video İşleniyor... Lütfen bekleyin!**"
         )
         try:
             read = db_mem[message.chat.id]["live_check"]
             if read:
                 return await mystic.edit(
-                    "Live Streaming Playing...Stop it to play music"
+                    "Canlı Yayın Oynatıyor... Müzik çalmak için durdurun"
                 )
             else:
                 pass
@@ -214,11 +214,11 @@ async def vplayaaa(_, message: Message):
         return await start_stream_video(
             message,
             file,
-            "Given Video Via Telegram",
+            "Telegram ile Verilen Video",
             mystic,
         )
     elif url:
-        mystic = await message.reply_text("🔄 Processing URL... Please Wait!")
+        mystic = await message.reply_text("🔄 URL işleniyor... Lütfen bekleyin!")
         if not message.reply_to_message:
             query = message.text.split(None, 1)[1]
         else:
@@ -243,12 +243,12 @@ async def vplayaaa(_, message: Message):
             await message.reply_photo(
                 photo="Utils/Playlist.jpg",
                 caption=(
-                    "**Usage:** /play [Music Name or Youtube Link or Reply to Audio]\n\nIf you want to play Playlists! Select the one from Below."
+                    "**Kullan:** /oynat [Müzik Adı veya Youtube Bağlantısı veya Sese Yanıt]\n\nÇalma Listelerini çalmak istiyorsanız! Aşağıdakilerden birini seçin."
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
             return
-        mystic = await message.reply_text("🔄 Processing... Please Wait!")
+        mystic = await message.reply_text("🔄 İşleniyor... Lütfen bekleyin!")
         query = message.text.split(None, 1)[1]
         (
             title,
