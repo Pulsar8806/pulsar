@@ -9,7 +9,7 @@ from youtube_search import YoutubeSearch
 from yt_dlp import YoutubeDL
 
 from Yukki import (BOT_USERNAME, app, db_mem) 
-from Datebase.filters import command
+from Datebase import filters command 
 
 
 def time_to_seconds(time):
