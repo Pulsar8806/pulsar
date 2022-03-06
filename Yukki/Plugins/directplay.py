@@ -152,7 +152,7 @@ async def mplayaa(_, message: Message):
         ) = get_yt_info_query(query)
         await mystic.delete()
         MusicData = f"Müzik Akışı {videoid}|{duration_min}|{message.from_user.id}"
-        return await dinle_stream(message,MusicData)
+        return await mplay_stream(message,MusicData)
 
 
 @app.on_message(
