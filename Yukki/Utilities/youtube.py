@@ -44,11 +44,13 @@ def get_yt_info_query_slider(query: str, query_type: int):
     duration_min = result[query_type]["duration"]
     videoid = result[query_type]["id"]
     thumbnail = result[query_type]["thumbnails"][0]["url"].split("?")[0]
+    views = result["viewCount"]["short"]
+        channel = result["channel"]["name"]
     if str(duration_min) == "None":
         duration_sec = 0
     else:
         duration_sec = int(time_to_seconds(duration_min))
-    return title, duration_min, duration_sec, thumbnail, videoid
+    return title, duration_min, duration_sec, thumbnail, videoid, views, channel
 
 
 async def get_m3u8(videoid):
