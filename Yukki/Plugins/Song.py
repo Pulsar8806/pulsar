@@ -47,8 +47,6 @@ async def bul(_, message: Message):
             duration_sec,
             thumb,
             videoid,
-            views,
-            channel,
         ) = await loop.run_in_executor(None, get_yt_info_query, query)
         if str(duration_min) == "None":
             return await mystic.edit("Pardon! Canlı Video")
