@@ -15,21 +15,15 @@ from Yukki.Utilities.youtube import get_yt_info_query, get_yt_info_query_slider
 
 loop = asyncio.get_event_loop()
 
+
 __MODULE__ = "Şarkı Bul"
 __HELP__ = """
 
-
 /bul [Youtube URL'si veya Arama Sorgusu] 
 - Belirli bir sorguyu ses veya video biçiminde indirin.
-
-
-
 """
 
-
-@app.on_message(
-    filters.command(["bul", f"bul@{BOT_USERNAME}"])
-)
+@app.on_message(filters.command(["bul", f"bul@{BOT_USERNAME}"]))
 @PermissionCheck
 async def play(_, message: Message):
     if message.chat.type == "private":
@@ -37,7 +31,7 @@ async def play(_, message: Message):
     else:
         if message.sender_chat:
             return await message.reply_text(
-                " __Anonim Yönetici__ bu Sohbet Grubunda!\nYönetici Haklarından Kullanıcı Hesabına Geri Dön."
+                "__Anonim Yönetici__ bu Sohbet Grubunda!\nYönetici Haklarından Kullanıcı Hesabına Geri Dön."
             )
     try:
         await message.delete()
@@ -86,7 +80,7 @@ async def play(_, message: Message):
         )
         return await message.reply_photo(
             photo=thumb,
-            caption=f"📎 Başlık: **{title}\n\n⏳ Süre:** {duration_min} Mins\n\n__[Video Hakkında Ek Bilgi Alın](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+            caption=f"📎 Başlık: **{title}\n\n⏳ Süre:** {duration_min} Dakika\n\n__[Video Hakkında Ek Bilgi Alın](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
 
@@ -122,7 +116,7 @@ async def song_right(_, CallbackQuery):
             query_type = 0
         else:
             query_type = int(type + 1)
-        await CallbackQuery.answer("Sonraki 🔍", show_alert=True)
+        await CallbackQuery.answer("Sonraki Sonucu Alma", show_alert=True)
         (
             title,
             duration_min,
@@ -147,7 +141,7 @@ async def song_right(_, CallbackQuery):
             query_type = 9
         else:
             query_type = int(type - 1)
-        await CallbackQuery.answer("Önceki 🔎", show_alert=True)
+        await CallbackQuery.answer("Önceki Sonucu Alma", show_alert=True)
         (
             title,
             duration_min,
