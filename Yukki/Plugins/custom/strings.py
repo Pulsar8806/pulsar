@@ -232,70 +232,70 @@ PLAY_TEXT = """
 SUDO_TEXT = f"""
 İşte yardımı **Sudo Komutları:**
 
-**<u>ADD & REMOVE SUDO USERS :</u>**
-/addsudo [Username or Reply to a user]
-/delsudo [Username or Reply to a user]
+**<u>Sudo Kullanıcıları Ekle Kaldır:</u>**
+/addsudo [Kullanıcı adı veya Kullanıcıya yanıt verme]
+/delsudo [Kullanıcı adı veya Kullanıcıya yanıt verme]
 
-**<u>BOT COMMANDS:</u>**
-/restart - Restart Bot. 
-/update - Update Bot.
-/stats - Check Bots Stats
+**<u>Bot Komutları:</u>**
+/restart - Botu Yeniden Başlat. 
+/update - Bot'ı Güncelleştir.
+/stats - Bot istatistiklerini kontrol edin
 
-**<u>BLACKLIST CHAT FUNCTION:</u>**
-/blacklistchat [CHAT_ID] - Blacklist any chat from using Music Bot
-/whitelistchat [CHAT_ID] - Whitelist any blacklisted chat from using Music Bot
+**<u>Kara Listeye Alma İşlemi:</u>**
+/blacklistchat [CHAT_ID] - Müzik Bot kullanarak herhangi bir sohbeti kara listeye alma
+/whitelistchat [CHAT_ID] - Müzik Bot'un kullanılmasından kara listeye alınan herhangi bir sohbeti beyaz listeye alma
 
-**<u>BROADCAST FUNCTION:</u>**
-/broadcast [Message or Reply to a Message] - Broadcast message.
-/broadcast_pin [Message or Reply to a Message] - Broadcast message with pin [Disabled Notifications].
-/broadcast_pin_loud [Message or Reply to a Message] - Broadcast message with pin [Enabled Notifications].
+**<u>Yayın İşlevi:</u>**
+/reklam [İleti veya İletiyi Yanıtlama] - Yayın iletisi.
+/broadcast_pin [İleti veya İletiyi Yanıtlama] - İletiyi pin ile yayınla [Devre Dışı Bildirimleri].
+/broadcast_pin_loud [İleti veya İletiyi Yanıtlama] - İletiyi pin ile yayınla [Etkin Bildirimler].
 
-**<u>GBAN FUNCTION:</u>**
-/gban [Username or Reply to a user] - Ban a user globally in Bot's Served Chats and prevents user from using bot commands.
-/ungban [Username or Reply to a user] - Remove a user from Bot's GBan List.
+**<u>Gban İşlevi:</u>**
+/gban [Kullanıcı adı veya Kullanıcıya yanıt verme] - Bot'un Sunulan Sohbetleri'nde bir kullanıcıyı genel olarak yasaklama ve kullanıcının bot komutlarını kullanmasını engelleme.
+/ungban [Kullanıcı adı veya Kullanıcıya yanıt verme] - Kullanıcıyı Bot'un GBan Listesinden kaldırma.
 """
 
 EXTRA_TEXT = """
-Here is the help for **Extra Commands:**
+İşte yardım **Ek Komutlar:**
 
 
-/lyrics [Music Name]
-- Searches Lyrics for the particular Music on web.
+/lyrics [Müzik Adı]
+- Web'de belirli bir Müzik için Şarkı Sözlerini Arar.
 
 /sudolist 
-- Check Sudo Users of Music Bot
+- Music Bot'un Sudo Kullanıcılarını Kontrol Edin
 
-/song [Track Name] or [YT Link]
-- Download any track from youtube in mp3 or mp4 formats via Bot.
+/bul [Parça Adı] or [YT Bağlantısı]
+- Bot üzerinden youtube'dan mp3 veya mp4 formatlarında herhangi bir parça indirin.
 
 /queue
-- Check Queue List of Music.
+- Müzik Sıra Listesini Denetle.
 """
 
 BASIC_TEXT = """
-💠 **Basic Commands:**
+💠 **Temel Komutlar:**
 
-/start - start the bot
-/help - get help message
-/oynat - play songs or videos in vc
-/dinle - play songs directly in vc
-/spotify - play songs from spotify
-/resso - play songs from resso
-/lyrics - get lyrics of song
-/ping - ping the bot
-/playlist - play your playlist
-/song - download a song as music or video
-/settings - settings of the group
-/queue - get queued song
+/start - botu başlatmak
+/help - yardım iletisi alma
+/oynat - sesli'de şarkı veya video oynatma
+/dinle - şarkıları doğrudan sesli'de çalmak
+/spotify - spotify'dan şarkı çalmak
+/resso - resso'dan şarkı çalmak
+/lyrics - şarkının sözlerini almak
+/ping - bota ping
+/playlist - çalma listenizi çalma
+/song - şarkıyı müzik veya video olarak indirme
+/settings - grubun ayarları
+/queue - sıraya alınan şarkıyı alma
 """
 
 BASIC_BACK_BUTTON = InlineKeyboardMarkup(
     [   [
             InlineKeyboardButton(
-                text="↪️ Back", callback_data="command_menu"
+                text="↪️ Geri", callback_data="command_menu"
             ),
             InlineKeyboardButton(
-                text="🔄 Close", callback_data="close_btn"
+                text="🔄 Kapat", callback_data="close_btn"
             ),            
         ],                        
     ]
@@ -304,20 +304,20 @@ BASIC_BACK_BUTTON = InlineKeyboardMarkup(
 COMMAND_MENU_BUTTON = InlineKeyboardMarkup(
     [   [
             InlineKeyboardButton(
-                text="🔍 Basic Commands", callback_data="basic_cmd"
+                text="🔍 Temel Komutlar", callback_data="basic_cmd"
             ),                                   
         ],
         [
             InlineKeyboardButton(
-                text="📚 Advanced Commands", callback_data="advanced_cmd"
+                text="📚 Gelişmiş Komutlar", callback_data="advanced_cmd"
             ),
         ],
         [
             InlineKeyboardButton(
-                text="↪️ Back", callback_data="open_start_menu"
+                text="↪️ Geri", callback_data="open_start_menu"
             ),
             InlineKeyboardButton(
-                text="🔄 Close", callback_data="close_btn"
+                text="🔄 Kapat", callback_data="close_btn"
             ),            
         ],                        
     ]
