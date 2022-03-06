@@ -1,3 +1,4 @@
+from Yukki.Utilities.yt_playlist import play_yt_playlist
 import requests
 from Yukki.Utilities.spotify import get_spotify_url, getsp_album_info, getsp_artist_info, getsp_playlist_info, getsp_track_info
 from Yukki.Plugins.custom.func import dinle_stream
@@ -154,6 +155,9 @@ async def oynat(_, message: Message):
         
         if "resso.com" in url:            
             return await message.reply_text("Kullanmak /resso yeniden gövde bağlantıları için")
+
+        if "youtube.com/playlist" in url:            
+            return await play_yt_playlist(message)
         
         mystic = await message.reply_text("🔄 URL işleniyor... Lütfen bekleyin!")
         if not message.reply_to_message:
