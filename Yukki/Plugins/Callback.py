@@ -50,7 +50,7 @@ async def forceclose(_, CallbackQuery):
 
 
 @app.on_callback_query(
-    filters.regex(pattern=r"^(durdurcb|atlacb|soncb|devamcb)$")
+    filters.regex(pattern=r"^(pausecb|skipcb|stopcb|resumecb)$")
 )
 @AdminRightsCheckCB
 @checkerCB
@@ -63,7 +63,7 @@ async def admin_risghts(_, CallbackQuery):
                 "Sesli sohbette hiçbir şey çalmıyor.", show_alert=True
             )
         chat_id = CallbackQuery.message.chat.id
-        if command == "durdurcb":
+        if command == "pausecb":
             if not await is_music_playing(chat_id):
                 return await CallbackQuery.answer(
                     "Müzik zaten Duraklatıldı", show_alert=True
@@ -76,7 +76,7 @@ async def admin_risghts(_, CallbackQuery):
             )
             await CallbackQuery.message.delete()
             await CallbackQuery.answer("Duraklatıldı", show_alert=True)
-        if command == "devamcb":
+        if command == "resumecb":
             if await is_music_playing(chat_id):
                 return await CallbackQuery.answer(
                     "Müzik zaten Devam Ediyor.", show_alert=True
@@ -89,7 +89,7 @@ async def admin_risghts(_, CallbackQuery):
             )
             await CallbackQuery.message.delete()
             await CallbackQuery.answer("Devam", show_alert=True)
-        if command == "soncb":
+        if command == "stopcb":
             if CallbackQuery.message.chat.id not in db_mem:
                 db_mem[CallbackQuery.message.chat.id] = {}
             wtfbro = db_mem[CallbackQuery.message.chat.id]
@@ -107,7 +107,7 @@ async def admin_risghts(_, CallbackQuery):
             )
             await CallbackQuery.message.delete()
             await CallbackQuery.answer("Kapatıldı", show_alert=True)
-        if command == "atlacb":
+        if command == "skipcb":
             if CallbackQuery.message.chat.id not in db_mem:
                 db_mem[CallbackQuery.message.chat.id] = {}
             wtfbro = db_mem[CallbackQuery.message.chat.id]
@@ -277,7 +277,7 @@ async def admin_risghts(_, CallbackQuery):
                         channel
                     ) = get_yt_info_id(videoid)
                     await mystic.edit(
-                        f"**{MUSIC_BOT_NAME} İndiriliyor 📥**\n\n**Başlık:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
+                        f"**{MUSIC_BOT_NAME} İndiriyor 📥**\n\n**Başlık:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
                     )
                     downloaded_file = await loop.run_in_executor(
                         None, download, videoid, mystic, title
