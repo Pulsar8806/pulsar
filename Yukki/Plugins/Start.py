@@ -394,13 +394,13 @@ async def start_markup_check(_, CallbackQuery):
             }
             try:
                 await Yukki.pytgcalls.change_volume_call(c_id, volume)
-                await CallbackQuery.answer("Setting Audio Changes ...")
+                await CallbackQuery.answer("Ses Değişikliklerini Ayarlama ...")
             except:
-                return await CallbackQuery.answer("No active Group Call...")
+                return await CallbackQuery.answer("Etkin Grup Çağrısı Yok...")
             await save_start(c_id, "assistant", assis)
             text, buttons = custommarkup()
             await CallbackQuery.edit_message_text(
-                text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+                text=f"{text}\n\n**Grup:** {c_title}\n**Grup Kimliği:** {c_id}\n**Ses Düzeyi:** {volume}%\n**Ses Kalitesi:** Varsayılan En İyi",
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
         if command == "PFZ":
@@ -416,13 +416,13 @@ async def start_markup_check(_, CallbackQuery):
             }
             try:
                 await Yukki.pytgcalls.change_volume_call(c_id, volume)
-                await CallbackQuery.answer("Setting Audio Changes ...")
+                await CallbackQuery.answer("Ses Değişikliklerini Ayarlama ...")
             except:
-                return await CallbackQuery.answer("No active Group Call...")
+                return await CallbackQuery.answer("Etkin Grup Çağrısı Yok...")
             await save_start(c_id, "assistant", assis)
             text, buttons = custommarkup()
             await CallbackQuery.edit_message_text(
-                text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+                text=f"{text}\n\n**Grup:** {c_title}\n**Grup Kimliği:** {c_id}\n**Ses Düzeyi:** {volume}%\n**Ses Kalitesi:** Varsayılan En İyi",
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
         if command == "MFZ":
@@ -438,30 +438,30 @@ async def start_markup_check(_, CallbackQuery):
             }
             try:
                 await Yukki.pytgcalls.change_volume_call(c_id, volume)
-                await CallbackQuery.answer("Setting Audio Changes ...")
+                await CallbackQuery.answer("Ses Değişikliklerini Ayarlama ...")
             except:
-                return await CallbackQuery.answer("No active Group Call...")
+                return await CallbackQuery.answer("Etkin Grup Çağrısı Yok...")
             await save_start(c_id, "assistant", assis)
             text, buttons = custommarkup()
             await CallbackQuery.edit_message_text(
-                text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+                text=f"{text}\n\n**Grup:** {c_title}\n**Grup Kimliği:** {c_id}\n**Ses Düzeyi:** {volume}%\n**Ses Kalitesi:** Varsayılan En İyi",
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
         if command == "USERLIST":
-            await CallbackQuery.answer("Auth Users!")
+            await CallbackQuery.answer("Kimlik Doğrulama Kullanıcıları!")
             text, buttons = usermarkup()
             _playlist = await get_authuser_names(CallbackQuery.message.chat.id)
             if not _playlist:
                 return await CallbackQuery.edit_message_text(
-                    text=f"{text}\n\nNo Authorized Users Found\n\nYou can allow any non-admin to use my admin commands by /auth and delete by using /unauth",
+                    text=f"{text}\n\nYetkili Kullanıcı Bulunamadı\n\n Yönetici olmayan herhangi bir kullanıcının /auth tarafından yönetici komutlarımı kullanmasına ve kullanarak silmesine izin verebilirsiniz /unauth",
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
             else:
                 j = 0
                 await CallbackQuery.edit_message_text(
-                    "Fetching Authorised Users... Please Wait"
+                    "Yetkili Kullanıcılar Getirtiyor... Lütfen bekleyin"
                 )
-                msg = f"**Authorised Users List[AUL]:**\n\n"
+                msg = f"**Yetkili Kullanıcılar Listesi[AUL]:**\n\n"
                 for note in _playlist:
                     _note = await get_authuser(
                         CallbackQuery.message.chat.id, note
@@ -477,7 +477,7 @@ async def start_markup_check(_, CallbackQuery):
                     except Exception:
                         continue
                     msg += f"{j}➤ {user}[`{user_id}`]\n"
-                    msg += f"    ┗ Added By:- {admin_name}[`{admin_id}`]\n\n"
+                    msg += f"    ┗ Ekleyen:- {admin_name}[`{admin_id}`]\n\n"
                 await CallbackQuery.edit_message_text(
                     msg, reply_markup=InlineKeyboardMarkup(buttons)
                 )
@@ -485,22 +485,22 @@ async def start_markup_check(_, CallbackQuery):
             bot_uptimee = int(time.time() - bot_start_time)
             Uptimeee = f"{get_readable_time((bot_uptimee))}"
             await CallbackQuery.answer(
-                f"Bot's Uptime: {Uptimeee}", show_alert=True
+                f"Bot'un Çalışma Süresi: {Uptimeee}", show_alert=True
             )
         if command == "CPT":
             cpue = psutil.cpu_percent(interval=0.5)
             await CallbackQuery.answer(
-                f"Bot's Cpu Usage: {cpue}%", show_alert=True
+                f"Bot'un cpu kullanımı: {cpue}%", show_alert=True
             )
         if command == "RAT":
             meme = psutil.virtual_memory().percent
             await CallbackQuery.answer(
-                f"Bot's Memory Usage: {meme}%", show_alert=True
+                f"Bot'un Bellek Kullanımı: {meme}%", show_alert=True
             )
         if command == "DIT":
             diske = psutil.disk_usage("/").percent
             await CallbackQuery.answer(
-                f"SiestaXMusic Disk Usage: {diske}%", show_alert=True
+                f"Talia Winamp Disk Kullanımı: {diske}%", show_alert=True
             )
     except Exception:
         pass
