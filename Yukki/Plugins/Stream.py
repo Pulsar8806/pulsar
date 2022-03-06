@@ -35,7 +35,7 @@ loop = asyncio.get_event_loop()
 __MODULE__ = "VideoCalls"
 __HELP__ = f"""
 
-/oynat [Herhangi bir Videoyu Yanıtlama] or [YT Link] or [Music Name]
+/oynat [Herhangi bir Videoyu Yanıtlama] or [YT Link] or [Müzik Adı]
 - Sesli Sohbette Video Akışı
 
 **Sudo Kullanıcısı İçin:-**
