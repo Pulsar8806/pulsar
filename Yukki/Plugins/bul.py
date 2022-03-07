@@ -4,7 +4,6 @@ import aiohttp
 import yt_dlp
 import wget
 
-from pyrogram.types import Message
 from pyrogram import Client, filters
 from youtube_search import YoutubeSearch
 from yt_dlp import YoutubeDL
@@ -17,7 +16,7 @@ def time_to_seconds(time):
 
 
 @Client.on_message(filters.command("bul"))  
-def bul(_, message: types.Message):
+def song(client, message):
 
     user_id = message.from_user.id
     user_name = message.from_user.first_name
@@ -78,7 +77,8 @@ def bul(_, message: types.Message):
         print(e)
 
 @Client.on_message(filters.command("vbul")) 
-async def vsong(_, message: types.Message):
+def vbul(client, message):
+
     ydl_opts = {
         "format": "best",
         "keepvideo": True,
