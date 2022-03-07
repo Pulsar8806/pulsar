@@ -100,9 +100,6 @@ COMMANDS_BUTTON_SUDO = InlineKeyboardMarkup(
             InlineKeyboardButton(
                 text="Komutları Yürüt", callback_data="play_cmd"
             ),
-            InlineKeyboardButton(
-                text="Sudo Komutları", callback_data="sudo_cmd"
-            ),            
         ],
         [
             InlineKeyboardButton(
@@ -135,7 +132,7 @@ BACK_BUTTON = InlineKeyboardMarkup(
 SUDO_BACK_BUTTON = InlineKeyboardMarkup(
     [   [
             InlineKeyboardButton(
-                text="Diğer Sudo Komutları", url="https://telegra.ph/SiestaXMusic-Sudo-Commands-02-08"
+                text="Diğer Sudo Komutları", url="https://t.me/BotDestekGrubu"
             ),                        
         ],
         [
