@@ -1,4 +1,3 @@
-from Yukki.Utilities.yt_playlist import play_yt_playlist
 import requests
 from Yukki.Utilities.spotify import get_spotify_url, getsp_album_info, getsp_artist_info, getsp_playlist_info, getsp_track_info
 from Yukki.Plugins.custom.func import mplay_stream
