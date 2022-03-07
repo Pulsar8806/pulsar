@@ -107,7 +107,7 @@ async def mplayaa(_, message: Message):
             mystic,
         )
     elif video:
-        return await message.reply_text("Kullan /oynat veya /vplay sesli sohbette video dosyalarını oynatma komutları.")
+        return await message.reply_text("Kullan /play veya /izle sesli sohbette video dosyalarını oynatma komutları bunlardır.")
     elif url:
         mystic = await message.reply_text("🔄 URL işleniyor... Lütfen bekleyin!")
         if not message.reply_to_message:
@@ -134,7 +134,7 @@ async def mplayaa(_, message: Message):
             await message.reply_photo(
                 photo="Utils/Playlist.jpg",
                 caption=(
-                    "**Kuklan:** /oynat [Müzik Adı veya Youtube Bağlantısı veya Sese Yanıt]\n\nÇalma Listelerini çalmak istiyorsanız! Aşağıdakilerden birini seçin."
+                    "**Kuklan:** /play [Müzik Adı veya Youtube Bağlantısı veya Sese Yanıt]\n\nÇalma Listelerini çalmak istiyorsanız! Aşağıdakilerden birini seçin."
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
@@ -187,7 +187,7 @@ async def vplayaaa(_, message: Message):
         limit = await get_video_limit(141414)
         if not limit:
             return await message.reply_text(
-                "**No Limit Defined for Video Calls**\n\nSet a Limit for Number of Maximum Video Calls allowed on Bot by /set_video_limit [Sudo Users Only]"
+                "**Görüntülü Aramalar İçin Sınır Tanımlanmadı**\n\nBot'ta İzin Verilen Maksimum Görüntülü Arama Sayısı İçin Bir Sınır Ayarlama /set_video_limit [Yalnızca Sudo Kullanıcıları]"
             )
         count = len(await get_active_video_chats())
         if int(count) == int(limit):
@@ -243,7 +243,7 @@ async def vplayaaa(_, message: Message):
             await message.reply_photo(
                 photo="Utils/Playlist.jpg",
                 caption=(
-                    "**Kullan:** /oynat [Müzik Adı veya Youtube Bağlantısı veya Sese Yanıt]\n\nÇalma Listelerini çalmak istiyorsanız! Aşağıdakilerden birini seçin."
+                    "**Kullan:** /play [Müzik Adı veya Youtube Bağlantısı veya Sese Yanıt]\n\nÇalma Listelerini çalmak istiyorsanız! Aşağıdakilerden birini seçin."
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
