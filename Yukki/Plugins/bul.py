@@ -7,7 +7,6 @@ import wget
 from pyrogram import Client, filters
 from youtube_search import YoutubeSearch
 from yt_dlp import YoutubeDL
-from helper.filters import command 
 from Yukki import (BOT_USERNAME, app, db_mem) 
 
 
@@ -16,7 +15,7 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@Client.on_message(command(["bul"]))
+@Client.on_message(filters.command("bul"))  
 def bul(client, message):
 
     user_id = message.from_user.id
