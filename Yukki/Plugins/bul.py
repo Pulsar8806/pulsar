@@ -16,7 +16,7 @@ def time_to_seconds(time):
 
 
 @Client.on_message(filters.command("bul"))  
-def song(client, message):
+async def bul(client, message):
 
     user_id = message.from_user.id
     user_name = message.from_user.first_name
