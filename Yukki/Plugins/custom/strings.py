@@ -204,11 +204,13 @@ PLAY_TEXT = """
 
 --**Youtube ve Telegram Dosyaları:**--
 
-/oynat __[Müzik Adı]__(Bot Youtube'da arama yapacak)
-/oynat __[Youtube Bağlantıyı veya Çalma Listesini izleme]__
-/oynat __[Video, Canlı, M3U8 Bağlantıları]__
-/oynat __[Ses veya Video Dosyasını Yanıtlama]__
-- Elde ettiğiniz satır içi Düğmeler'i seçerek Sesli Sohbette Video veya Müzik Akışı
+/play __[Müzik Adı]__(Bot Youtube'da arama yapacak)
+/play __[Youtube Bağlantıyı veya Çalma Listesini izleme]__
+/play __[Video, Canlı, M3U8 Bağlantıları]__
+/play __[Ses veya Video Dosyasını Yanıtlama]__
+/oynat __[Şarkıları Hızlı ve Seri Dinlemek içindir.]__
+/izle ___[Görüntülü Video izlemenize olanak tanır.]__
+- Elde ettiğiniz satır içi Düğmeler'i seçerek Sesli Sohbette Video veya Müzik Akışı sağlar. 
 
 
 --**Çalma Listeleri:**--
@@ -274,14 +276,14 @@ BASIC_TEXT = """
 
 /start - botu başlatmak
 /help - yardım iletisi alma
-/oynat - sesli'de şarkı veya video oynatma
-/dinle - şarkıları doğrudan sesli'de çalmak
+/play - sesli'de şarkı veya video oynatmak url daha fazlası
+/oynat - şarkıları doğrudan sesli'de çalma seri çalar.
 /spotify - spotify'dan şarkı çalmak
 /resso - resso'dan şarkı çalmak
 /lyrics - şarkının sözlerini almak
 /ping - bota ping
 /playlist - çalma listenizi çalma
-/song - şarkıyı müzik veya video olarak indirme
+/bul - şarkıyı müzik veya video olarak indirme
 /settings - grubun ayarları
 /queue - sıraya alınan şarkıyı alma
 """
