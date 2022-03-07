@@ -33,7 +33,7 @@ from Yukki.Utilities.youtube import (get_yt_info_id, get_yt_info_query,
 from Yukki.Plugins.custom.func import mplay_stream, vplay_stream
 
 @app.on_message(
-    filters.command(["dinle", f"dinle@{BOT_USERNAME}"]) & filters.group
+    filters.command(["oynat", f"oynat@{BOT_USERNAME}"]) & filters.group
 )
 @checker
 @logging
