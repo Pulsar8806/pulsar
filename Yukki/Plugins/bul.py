@@ -77,7 +77,7 @@ def bul(_, message: types.Message):
     except Exception as e:
         print(e)
 
-@@Client.on_message(filters.command("vbul")) 
+@Client.on_message(filters.command("vbul")) 
 async def vsong(_, message: types.Message):
     ydl_opts = {
         "format": "best",
