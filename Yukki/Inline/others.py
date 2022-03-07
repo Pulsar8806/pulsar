@@ -11,7 +11,7 @@ def others_markup(videoid, user_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text="🔎 Şarkı Sözlerini Ara",
+                text="🔎 Şarkı Sözleri",
                 callback_data=f"lyrics {videoid}|{user_id}",
             )
         ],
@@ -27,7 +27,7 @@ def others_markup(videoid, user_id):
         ],
         [
             InlineKeyboardButton(
-                text="☑️ Anlık indir",
+                text="✅ Anlık indir",
                 callback_data=f"audio_video_download {videoid}|{user_id}",
             )
         ],
@@ -49,11 +49,11 @@ def download_markup(videoid, user_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text="⬇️ Mp3 indir",
+                text="☑️ Mp3 indir",
                 callback_data=f"gets audio|{videoid}|{user_id}",
             ),
             InlineKeyboardButton(
-                text="⬇️ Video indir",
+                text="☑️ Video indir",
                 callback_data=f"gets video|{videoid}|{user_id}",
             ),
         ],
@@ -61,7 +61,7 @@ def download_markup(videoid, user_id):
             InlineKeyboardButton(
                 text="🔙 Geri Git", callback_data=f"goback {videoid}|{user_id}"
             ),
-            InlineKeyboardButton(text="👉 Menüyü Kapat", callback_data=f"close"),
+            InlineKeyboardButton(text="👉 Kapat", callback_data=f"close"),
         ],
     ]
     return buttons
