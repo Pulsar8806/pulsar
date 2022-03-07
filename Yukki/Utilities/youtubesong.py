@@ -16,8 +16,9 @@ def get_yt_info_id(videoid):
             duration_sec = 0
         else:
             duration_sec = int(time_to_seconds(duration_min))
-    return title, duration_min, duration_sec, thumbnail
-
+        views = result["viewCount"]["short"]
+        channel = result["channel"]["name"]
+    return title, duration_min, duration_sec, thumbnail, views, channel
 
 def get_yt_info_query(query: str):
     results = VideosSearch(query, limit=1)
@@ -30,8 +31,6 @@ def get_yt_info_query(query: str):
             duration_sec = 0
         else:
             duration_sec = int(time_to_seconds(duration_min))
-        views = result["viewCount"]["short"]
-        channel = result["channel"]["name"]
     return title, duration_min, duration_sec, thumbnail, videoid
 
 
