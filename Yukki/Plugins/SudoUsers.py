@@ -21,29 +21,29 @@ __HELP__ = """
 
 
 /sudolist 
-    Check the sudo user list of Bot. 
+    Bot'un sudo kullanıcı listesini kontrol edin. 
 
 
-**Note:**
+**Not:**
 Only for Sudo Users. 
 
 
-/addsudo [Username or Reply to a user]
-- To Add A User In Bot's Sudo Users.
+/addsudo [Kullanıcı adı veya Kullanıcıya yanıt verme]
+- Bot'un Sudo Kullanıcılarına Kullanıcı Eklemek İçin.
 
-/delsudo [Username or Reply to a user]
+/delsudo [Kullanıcı adı veya Kullanıcıya yanıt verme]
 - To Remove A User from Bot's Sudo Users.
 
 /maintenance [enable / disable]
-- When enabled Bot goes under maintenance mode. No one can play Music now!
+- Etkinleştirildiğinde Bot bakım moduna geçer. Artık kimse müzik çalamaz.!
 
 /logger [enable / disable]
-- When enabled Bot logs the searched queries in logger group.
+- Etkinleştirildiğinde Bot, aranan sorguları günlükçü grubunda günlüğe kaydeder.
 
 /clean
-- Clean Temp Files and Logs.
+- Temp Dosyalarını ve Günlüklerini Temizle.
 """
-# Add Sudo Users!
+# Sudo Kullanıcıları Ekle!
 
 
 @app.on_message(filters.command("addsudo") & filters.user(OWNER_ID))
@@ -51,7 +51,7 @@ async def useradd(_, message: Message):
     if not message.reply_to_message:
         if len(message.command) != 2:
             await message.reply_text(
-                "Reply to a user's message or give username/user_id."
+                "Kullanıcının iletisini yanıtlama veya kullanıcı adı verme/user_id."
             )
             return
         user = message.text.split(None, 1)[1]
@@ -60,12 +60,12 @@ async def useradd(_, message: Message):
         user = await app.get_users(user)
         if user.id in SUDOERS:
             return await message.reply_text(
-                f"{user.mention} is already a sudo user."
+                f"{user.mention} zaten bir SUDO kullanıcısı."
             )
         added = await add_sudo(user.id)
         if added:
             await message.reply_text(
-                f"Added **{user.mention}** to Sudo Users."
+                f"Eklendi **{user.mention}** Sudo Kullanıcılarına."
             )
             os.system(f"kill -9 {os.getpid()} && python3 -m Yukki")
         else:
@@ -73,12 +73,12 @@ async def useradd(_, message: Message):
         return
     if message.reply_to_message.from_user.id in SUDOERS:
         return await message.reply_text(
-            f"{message.reply_to_message.from_user.mention} is already a sudo user."
+            f"{message.reply_to_message.from_user.mention} zaten bir SUDO kullanıcısı."
         )
     added = await add_sudo(message.reply_to_message.from_user.id)
     if added:
         await message.reply_text(
-            f"Added **{message.reply_to_message.from_user.mention}** to Sudo Users"
+            f"Eklendi **{message.reply_to_message.from_user.mention}** Sudo Kullanıcılarına"
         )
         os.system(f"kill -9 {os.getpid()} && python3 -m Yukki")
     else:
@@ -91,7 +91,7 @@ async def userdel(_, message: Message):
     if not message.reply_to_message:
         if len(message.command) != 2:
             await message.reply_text(
-                "Reply to a user's message or give username/user_id."
+                "Kullanıcının iletisini yanıtlama veya kullanıcı adı verme/user_id."
             )
             return
         user = message.text.split(None, 1)[1]
@@ -100,35 +100,35 @@ async def userdel(_, message: Message):
         user = await app.get_users(user)
         from_user = message.from_user
         if user.id not in SUDOERS:
-            return await message.reply_text(f"Not a part of Bot's Sudo.")
+            return await message.reply_text(f"Bot'un Sudo'sunun bir parçası değil.")
         removed = await remove_sudo(user.id)
         if removed:
             await message.reply_text(
-                f"Removed **{user.mention}** from {MUSIC_BOT_NAME}'s Sudo."
+                f"Kaldırıldı **{user.mention}** Kaynak {MUSIC_BOT_NAME}'un Sudo."
             )
             return os.system(f"kill -9 {os.getpid()} && python3 -m Yukki")
-        await message.reply_text(f"Something wrong happened.")
+        await message.reply_text(f"Yanlış bir şey oldu..")
         return
     from_user_id = message.from_user.id
     user_id = message.reply_to_message.from_user.id
     mention = message.reply_to_message.from_user.mention
     if user_id not in SUDOERS:
         return await message.reply_text(
-            f"Not a part of {MUSIC_BOT_NAME}'s Sudo."
+            f"Bir parçası değil {MUSIC_BOT_NAME}'un Sudo."
         )
     removed = await remove_sudo(user_id)
     if removed:
         await message.reply_text(
-            f"Removed **{mention}** from {MUSIC_BOT_NAME}'s Sudo."
+            f"Kaldırıldı **{mention}** Kaynak {MUSIC_BOT_NAME}'un Sudo."
         )
         return os.system(f"kill -9 {os.getpid()} && python3 -m Yukki")
-    await message.reply_text(f"Something wrong happened.")
+    await message.reply_text(f"Yanlış bir şey oldu..")
 
 
 @app.on_message(filters.command("sudolist"))
 async def sudoers_list(_, message: Message):
     sudoers = await get_sudoers()
-    text = "⭐️<u> **Owners:**</u>\n"
+    text = "⭐️<u> **Sahipler:**</u>\n"
     sex = 0
     for x in OWNER_ID:
         try:
@@ -146,18 +146,18 @@ async def sudoers_list(_, message: Message):
                 user = user.first_name if not user.mention else user.mention
                 if smex == 0:
                     smex += 1
-                    text += "\n⭐️<u> **Sudo Users:**</u>\n"
+                    text += "\n⭐️<u> **Sudo Kullanıcıları:**</u>\n"
                 sex += 1
                 text += f"{sex}➤ {user}\n"
             except Exception:
                 continue
     if not text:
-        await message.reply_text("No Sudo Users")
+        await message.reply_text("Sudo Kullanıcısı Yok")
     else:
         await message.reply_text(text)
 
 
-### Video Limit
+### Video Sınırı
 
 
 @app.on_message(
@@ -166,7 +166,7 @@ async def sudoers_list(_, message: Message):
 )
 async def set_video_limit_kid(_, message: Message):
     if len(message.command) != 2:
-        usage = "**Usage:**\n/set_video_limit [Number of chats allowed]"
+        usage = "**Kullanım:**\n/set_video_limit [İzin verilen sohbet sayısı]"
         return await message.reply_text(usage)
     chat_id = message.chat.id
     state = message.text.split(None, 1)[1].strip()
@@ -174,20 +174,20 @@ async def set_video_limit_kid(_, message: Message):
         limit = int(state)
     except:
         return await message.reply_text(
-            "Please Use Numeric Numbers for Setting Limit."
+            "Sınırı Ayarlamak İçin Lütfen Sayısal Sayılar Kullanın."
         )
     await set_video_limit(141414, limit)
     await message.reply_text(
-        f"Video Calls Maximum Limit Defined to {limit} Chats."
+        f"Video Aramaları En Fazla Tanımlı Sınırı {limit} Sohbet."
     )
 
 
-## Maintenance Yukki
+## Bakım Yukki
 
 
 @app.on_message(filters.command("maintenance") & filters.user(SUDOERS))
 async def maintenance(_, message):
-    usage = "**Usage:**\n/maintenance [enable|disable]"
+    usage = "**Kullanım:**\n/maintenance [enable|disable]"
     if len(message.command) != 2:
         return await message.reply_text(usage)
     chat_id = message.chat.id
@@ -196,25 +196,25 @@ async def maintenance(_, message):
     if state == "enable":
         user_id = 1
         await add_on(user_id)
-        await message.reply_text("Enabled for Maintenance")
+        await message.reply_text("Bakım için Etkinleştirildi")
     elif state == "disable":
         user_id = 1
         await add_off(user_id)
-        await message.reply_text("Maintenance Mode Disabled")
+        await message.reply_text("Bakım Modu Devre Dışı")
     else:
         await message.reply_text(usage)
 
 
-## Logger
+## Günlükçü
 
 
 @app.on_message(filters.command("logger") & filters.user(SUDOERS))
 async def logger(_, message):
     if LOG_SESSION == "None":
         return await message.reply_text(
-            "No Logger Account Defined.\n\nPlease Set <code>LOG_SESSION</code> var and then try loggging."
+            "Günlükçü Hesabı Tanımlanmadı.\n\nPlease Seti <code>LOG_SESSION</code> var ve sonra günlüğe kaydetmeyi deneyin."
         )
-    usage = "**Usage:**\n/logger [enable|disable]"
+    usage = "**Kullanım:**\n/logger [enable|disable]"
     if len(message.command) != 2:
         return await message.reply_text(usage)
     chat_id = message.chat.id
@@ -223,23 +223,23 @@ async def logger(_, message):
     if state == "enable":
         user_id = 5
         await add_on(user_id)
-        await message.reply_text("Enabled Logging")
+        await message.reply_text("Etkin Günlüğe Kaydetme")
     elif state == "disable":
         user_id = 5
         await add_off(user_id)
-        await message.reply_text("Logging Disabled")
+        await message.reply_text("Günlüğe Kaydetme Devre Dışı")
     else:
         await message.reply_text(usage)
 
 
-## Gban Module
+## Gban Modülü
 
 
 @app.on_message(filters.command("gban") & filters.user(SUDOERS))
 async def ban_globally(_, message):
     if not message.reply_to_message:
         if len(message.command) < 2:
-            await message.reply_text("**Usage:**\n/gban [USERNAME | USER_ID]")
+            await message.reply_text("**Kullanım:**\n/gban [KULLANICI ADI | USER_ID]")
             return
         user = message.text.split(None, 2)[1]
         if "@" in user:
@@ -248,12 +248,12 @@ async def ban_globally(_, message):
         from_user = message.from_user
         if user.id == from_user.id:
             return await message.reply_text(
-                "You want to gban yourself? How Fool!"
+                "Kendini gban mı istiyorsun? Ne Kadar Aptalca!"
             )
         elif user.id == BOT_ID:
-            await message.reply_text("Should i block myself? Lmao Ded!")
+            await message.reply_text("Kendimi engellemeli miyim? Şaka gibi!")
         elif user.id in SUDOERS:
-            await message.reply_text("You want to block a sudo user? KIDXZ")
+            await message.reply_text("Sudo kullanıcısını engellemek mi istiyorsunuz? Reis")
         else:
             await add_gban_user(user.id)
             served_chats = []
@@ -261,7 +261,7 @@ async def ban_globally(_, message):
             for chat in chats:
                 served_chats.append(int(chat["chat_id"]))
             m = await message.reply_text(
-                f"**Initializing Global Ban on {user.mention}**\n\nExpected Time : {len(served_chats)}"
+                f"**Küresel Yasaklamayı Başlat {user.mention}**\n\nBeklenen Süre : {len(served_chats)}"
             )
             number_of_chats = 0
             for sex in served_chats:
@@ -274,13 +274,13 @@ async def ban_globally(_, message):
                 except Exception:
                     pass
             ban_text = f"""
-__**New Global Ban on {MUSIC_BOT_NAME}**__
+__**Yeni Küresel Yasak {MUSIC_BOT_NAME}**__
 
-**Origin:** {message.chat.title} [`{message.chat.id}`]
-**Sudo User:** {from_user.mention}
-**Banned User:** {user.mention}
-**Banned User ID:** `{user.id}`
-**Chats:** {number_of_chats}"""
+**Köken:** {message.chat.title} [`{message.chat.id}`]
+**Sudo Kullanıcısı:** {from_user.mention}
+**Yasaklı Kullanıcı:** {user.mention}
+**Yasaklanmış Kullanıcı Kimliği:** `{user.id}`
+**Sohbet:** {number_of_chats}"""
             try:
                 await m.delete()
             except Exception:
@@ -296,15 +296,15 @@ __**New Global Ban on {MUSIC_BOT_NAME}**__
     mention = message.reply_to_message.from_user.mention
     sudoers = await get_sudoers()
     if user_id == from_user_id:
-        await message.reply_text("You want to block yourself? How Fool!")
+        await message.reply_text("Kendini engellemek mi istiyorsun? Ne Kadar Aptalca!")
     elif user_id == BOT_ID:
-        await message.reply_text("Should i block myself? Lmao Ded!")
+        await message.reply_text("Kendimi engellemeli miyim? Şaka gibi..")
     elif user_id in sudoers:
-        await message.reply_text("You want to block a sudo user? KIDXZ")
+        await message.reply_text("Sudo kullanıcısını engellemek mi istiyorsunuz? Reis..")
     else:
         is_gbanned = await is_gbanned_user(user_id)
         if is_gbanned:
-            await message.reply_text("Already Gbanned.")
+            await message.reply_text("Zaten Gbanned.")
         else:
             await add_gban_user(user_id)
             served_chats = []
@@ -312,7 +312,7 @@ __**New Global Ban on {MUSIC_BOT_NAME}**__
             for chat in chats:
                 served_chats.append(int(chat["chat_id"]))
             m = await message.reply_text(
-                f"**Initializing Gobal Ban on {mention}**\n\nExpected Time : {len(served_chats)}"
+                f"**Global Yasağını Başlatmak {mention}**\n\nBeklenen Süre : {len(served_chats)}"
             )
             number_of_chats = 0
             for sex in served_chats:
@@ -325,13 +325,13 @@ __**New Global Ban on {MUSIC_BOT_NAME}**__
                 except Exception:
                     pass
             ban_text = f"""
-__**New Global Ban on {MUSIC_BOT_NAME}**__
+__**Yeni Küresel Yasak {MUSIC_BOT_NAME}**__
 
-**Origin:** {message.chat.title} [`{message.chat.id}`]
-**Sudo User:** {from_user_mention}
-**Banned User:** {mention}
-**Banned User ID:** `{user_id}`
-**Chats:** {number_of_chats}"""
+**Köken:** {message.chat.title} [`{message.chat.id}`]
+**Sudo Kullanıcısı:** {from_user_mention}
+**Yasaklı Kullanıcı:** {mention}
+**Yasaklanmış Kullanıcı Kimliği:** `{user_id}`
+**Sohbet:** {number_of_chats}"""
             try:
                 await m.delete()
             except Exception:
@@ -348,7 +348,7 @@ async def unban_globally(_, message):
     if not message.reply_to_message:
         if len(message.command) != 2:
             await message.reply_text(
-                "**Usage:**\n/ungban [USERNAME | USER_ID]"
+                "**Kullanım:**\n/ungban [KULLANICI ADI | USER_ID]"
             )
             return
         user = message.text.split(None, 1)[1]
@@ -358,15 +358,15 @@ async def unban_globally(_, message):
         from_user = message.from_user
         sudoers = await get_sudoers()
         if user.id == from_user.id:
-            await message.reply_text("You want to unblock yourself?")
+            await message.reply_text("Engelini kaldırmak istiyorsun.?")
         elif user.id == BOT_ID:
-            await message.reply_text("Should i unblock myself?")
+            await message.reply_text("Engelimi kaldırmalı mıyım??")
         elif user.id in sudoers:
-            await message.reply_text("Sudo users can't be blocked/unblocked.")
+            await message.reply_text("Sudo kullanıcıları engellenemiyor/unblocked.")
         else:
             is_gbanned = await is_gbanned_user(user.id)
             if not is_gbanned:
-                await message.reply_text("He's already free, why bully him?")
+                await message.reply_text("O zaten özgür, neden ona ban atalım ki?")
             else:
                 await remove_gban_user(user.id)
                 await message.reply_text(f"Ungbanned!")
@@ -376,23 +376,23 @@ async def unban_globally(_, message):
     mention = message.reply_to_message.from_user.mention
     sudoers = await get_sudoers()
     if user_id == from_user_id:
-        await message.reply_text("You want to unblock yourself?")
+        await message.reply_text("Engelini kaldırmak istiyorsun.?")
     elif user_id == BOT_ID:
         await message.reply_text(
-            "Should i unblock myself? But i'm not blocked."
+            "Engelimi kaldırmalı mıyım? Ama engellenmedim.."
         )
     elif user_id in sudoers:
-        await message.reply_text("Sudo users can't be blocked/unblocked.")
+        await message.reply_text("Sudo kullanıcıları engellenemiyor..engellenemiyor.")
     else:
         is_gbanned = await is_gbanned_user(user_id)
         if not is_gbanned:
-            await message.reply_text("He's already free, why bully him?")
+            await message.reply_text("O zaten özgür, neden banlayayım?")
         else:
             await remove_gban_user(user_id)
             await message.reply_text(f"Ungbanned!")
 
 
-# Broadcast Message
+# Yayın İletisi
 
 
 @app.on_message(filters.command("broadcast_pin") & filters.user(SUDOERS))
@@ -421,12 +421,12 @@ async def broadcast_message_pin_silent(_, message):
             except Exception:
                 pass
         await message.reply_text(
-            f"**Broadcasted Message In {sent}  Chats with {pin} Pins.**"
+            f"**Yayınlanan İleti {sent}  Sohbetler {pin} Pins.**"
         )
         return
     if len(message.command) < 2:
         await message.reply_text(
-            "**Usage**:\n/broadcast [MESSAGE] or [Reply to a Message]"
+            "**Kullanım**:\n/broadcast [İLETİ] veya [İletiyi Yanıtlama]"
         )
         return
     text = message.text.split(None, 1)[1]
@@ -449,7 +449,7 @@ async def broadcast_message_pin_silent(_, message):
         except Exception:
             pass
     await message.reply_text(
-        f"**Broadcasted Message In {sent} Chats and {pin} Pins.**"
+        f"**Yayınlanan İleti {sent} Sohbetler ve {pin} Pins.**"
     )
 
 
@@ -479,12 +479,12 @@ async def broadcast_message_pin_loud(_, message):
             except Exception:
                 pass
         await message.reply_text(
-            f"**Broadcasted Message In {sent}  Chats with {pin} Pins.**"
+            f"**Yayınlanan İleti {sent}  Sohbetler {pin} Pins.**"
         )
         return
     if len(message.command) < 2:
         await message.reply_text(
-            "**Usage**:\n/broadcast [MESSAGE] or [Reply to a Message]"
+            "**Kullanım**:\n/broadcast [İLETİ] veya [İletiyi Yanıtlama]"
         )
         return
     text = message.text.split(None, 1)[1]
@@ -507,11 +507,11 @@ async def broadcast_message_pin_loud(_, message):
         except Exception:
             pass
     await message.reply_text(
-        f"**Broadcasted Message In {sent} Chats and {pin} Pins.**"
+        f"**Yayınlanan İleti İçinde {sent} Sohbetler ve {pin} Pins.**"
     )
 
 
-@app.on_message(filters.command("broadcast") & filters.user(SUDOERS))
+@app.on_message(filters.command("reklam") & filters.user(SUDOERS))
 async def broadcast(_, message):
     if not message.reply_to_message:
         pass
@@ -530,11 +530,11 @@ async def broadcast(_, message):
                 sent += 1
             except Exception:
                 pass
-        await message.reply_text(f"**Broadcasted Message In {sent} Chats.**")
+        await message.reply_text(f"**Yayınlanan İleti {sent} Sohbetler.**")
         return
     if len(message.command) < 2:
         await message.reply_text(
-            "**Usage**:\n/broadcast [MESSAGE] or [Reply to a Message]"
+            "**Kullanım**:\n/reklam [İLETİ] veya [İletiyi Yanıtlama]"
         )
         return
     text = message.text.split(None, 1)[1]
@@ -550,10 +550,10 @@ async def broadcast(_, message):
             sent += 1
         except Exception:
             pass
-    await message.reply_text(f"**Broadcasted Message In {sent} Chats.**")
+    await message.reply_text(f"**Yayınlanan İleti {sent} Sohbetler.**")
 
 
-# Clean
+# Temizlik
 
 
 @app.on_message(filters.command("clean") & filters.user(SUDOERS))
@@ -564,4 +564,4 @@ async def clean(_, message):
     shutil.rmtree(dir1)
     os.mkdir(dir)
     os.mkdir(dir1)
-    await message.reply_text("Successfully cleaned all **temp** dir(s)!")
+    await message.reply_text("Tümü başarıyla temizlendi **Temp** dir(s)!")
