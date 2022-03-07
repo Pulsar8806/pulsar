@@ -32,8 +32,9 @@ ydl_opts = {
 }
 
 
-@Client.on_message(filters.command("bul")) 
-def bul(_, message: types.Message):
+@app.on_message(
+    filters.command(["bul"])) 
+async def bul(_, message: types.Message):
     query = " ".join(message.command[1:])
     m = message.reply("🔎 Aranıyor..")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
