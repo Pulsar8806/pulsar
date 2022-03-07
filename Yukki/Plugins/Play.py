@@ -156,9 +156,6 @@ async def oynat(_, message: Message):
         if "resso.com" in url:            
             return await message.reply_text("Kullanmak /resso yeniden gövde bağlantıları için")
 
-        if "youtube.com/playlist" in url:            
-            return await play_yt_playlist(message)
-        
         mystic = await message.reply_text("🔄 URL işleniyor... Lütfen bekleyin!")
         if not message.reply_to_message:
             query = message.text.split(None, 1)[1]
