@@ -22,10 +22,10 @@ __HELP__ = """
 - Belirli bir sorguyu ses veya video biçiminde indirme.
 """
 
+loop = asyncio.get_event_loop()
 
-@app.on_message(
-    filters.command(["bul", f"bul@{BOT_USERNAME}"])
-)
+
+@app.on_message(filters.command(["bul", f"bul@{BOT_USERNAME}"]))
 @PermissionCheck
 async def play(_, message: Message):
     if message.chat.type == "private":
@@ -33,7 +33,7 @@ async def play(_, message: Message):
     else:
         if message.sender_chat:
             return await message.reply_text(
-                "You're an __Anonymous Admin__ in this Chat Group!\nRevert back to User Account From Admin Rights."
+                "__Anonim Yönetici__ bu Sohbet Grubunda!\nYönetici Haklarından Kullanıcı Hesabına Geri Dön."
             )
     try:
         await message.delete()
@@ -41,7 +41,7 @@ async def play(_, message: Message):
         pass
     url = get_url(message)
     if url:
-        mystic = await message.reply_text("🔄 Processing URL... Please Wait!")
+        mystic = await message.reply_text("🔄 URL işleniyor... Lütfen bekleyin!")
         query = message.text.split(None, 1)[1]
         (
             title,
@@ -56,16 +56,16 @@ async def play(_, message: Message):
         buttons = song_download_markup(videoid, message.from_user.id)
         return await message.reply_photo(
             photo=thumb,
-            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+            caption=f"📎 Başlık: **{title}\n\n⏳ Süre:** {duration_min} Dakika\n\n__[Video Hakkında Ek Bilgi Alın](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     else:
         if len(message.command) < 2:
             await message.reply_text(
-                "**Usage:**\n\n/song [Youtube Url or Music Name]\n\nDownloads the Particular Query."
+                "**Kullanım:**\n\n/bul [Youtube Url'si veya Müzik Adı]\n\nBelirli Sorguyu Karşıdan Yükler."
             )
             return
-        mystic = await message.reply_text("🔍 Sorgu Aranıyor...")
+        mystic = await message.reply_text("🔍 Sorgunuz Aranıyor...")
         query = message.text.split(None, 1)[1]
         (
             title,
@@ -82,9 +82,24 @@ async def play(_, message: Message):
         )
         return await message.reply_photo(
             photo=thumb,
-            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+            caption=f"📎 Başlık: **{title}\n\n⏳ Süre:** {duration_min} Dakika\n\n__[Video Hakkında Ek Bilgi Alın](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
+
+
+@app.on_callback_query(filters.regex("qwertyuiopasdfghjkl"))
+async def qwertyuiopasdfghjkl(_, CallbackQuery):
+    print("234")
+    await CallbackQuery.answer()
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    userid = CallbackQuery.from_user.id
+    videoid, user_id = callback_request.split("|")
+    buttons = song_download_markup(videoid, user_id)
+    await CallbackQuery.edit_message_reply_markup(
+        reply_markup=InlineKeyboardMarkup(buttons)
+    )
+
 
 @app.on_callback_query(filters.regex(pattern=r"song_right"))
 async def song_right(_, CallbackQuery):
