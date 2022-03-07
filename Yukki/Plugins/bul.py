@@ -18,7 +18,7 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 from yt_dlp import YoutubeDL
 
-from Yukki.Utilities.formatters import humanbytes
+from Yukki.Utilities.formatters import bytes
 
 
 
