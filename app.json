@@ -1,12 +1,12 @@
 {
-  "name": "PulsarXMusic",
+  "name": "Talia-WinampMusic",
   "description": "Pytrogram ve Py-Tgcalls ile Python'da yazılmış doğru işlevlere sahip Telegram Müzik Botu.",
   "logo": "https://telegra.ph/file/70eacddcef7a56310cf70.jpg",
   "keywords": [
   "python3",
   "telegram",
   "bot",
-  "SiestaXMusic",
+  "Talia-WinampMusic",
   "telegram-bot",
   "pyrogram"
   ],
@@ -99,7 +99,7 @@
     },
     "THUMB_LINK": {
       "description": "Küçük resim olarak ayarlamak istediğiniz görüntünün telgraf resim bağlantısı.",
-      "value": "https://telegra.ph/file/e17f42bc195635b668d6d.jpg",
+      "value": "https://i.ibb.co/khRz42f/Turkish-Voice.jpg",
       "required": true
     },
     "BOT_USERNAME": {
